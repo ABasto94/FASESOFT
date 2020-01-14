@@ -1,0 +1,72 @@
+<style>
+td{
+    text-rendering: auto;
+}
+</style>
+<div id="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+              <h3>Lista de solicitudes de crédito {{salidaTest}}</h3>
+                    </div>
+                </div>
+                <div *ngIf="openGenericSearch">
+                    <generic-search
+                        [fieldList]='fieldList'
+                        (queryParamList)="onSearchEdit($event)">
+                    </generic-search>
+                </div>
+                
+               
+
+                <div class="card-body">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="panel-body">
+                            <sa-datatable  id= "table" *ngIf="fasCreditoAfiliadoList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="70%">
+	                            <thead>
+                                    <tr>
+                                        <th data-class="expand" style="text-align: center; vertical-align: middle">{{ metadata2.idCredito.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.fechaSolicitud.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.nombre.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.identificacion.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.monto.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.cuota.label }}</th>	                                	
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.tasaReal.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.tipoCredito.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.montoFijo.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.deuda.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">{{ metadata2.estado.label }}</th>
+                                        <th data-hide="phone,tablet" style="text-align: center; vertical-align: middle">Acciones</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr *ngFor="let fasCreditoAfiliado of fasCreditoAfiliadoList" (click)="onSelectedFasCreditoAfiliado(fasCreditoAfiliado)" >
+                                          <td >{{fasCreditoAfiliado.idCredito}}</td>
+                                          <td>{{fasCreditoAfiliado.fechaSolicitud | date:"shortDate"}}</td>
+                                          <td >{{fasCreditoAfiliado.nombre}}</td>
+                                          <td >{{fasCreditoAfiliado.identificacion}}</td>
+                                          <td>{{fasCreditoAfiliado.monto | currency : 'USD' : 'symbol' : '1.0-0' }}</td>
+                                          <td style="text-align:center">{{fasCreditoAfiliado.cuota}}</td>
+                                          <td style="text-align:center">{{fasCreditoAfiliado.tasaReal | percent}}</td>
+                                          <td >{{fasCreditoAfiliado.tipoCredito}}</td>
+                                          <td style="text-align:right">{{fasCreditoAfiliado.montoFijo|  currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+                                          <td style="text-align:right">{{fasCreditoAfiliado.deuda|  currency : 'USD' : 'symbol' : '1.0-0'}}</td>
+                                          <td >{{fasCreditoAfiliado.estado}}</td>
+                                          <td><button (click)="aceptar(fasCreditoAfiliado)"><i class=" glyphicon glyphicon-ok" ></i></button><button (click)="rechazar(fasCreditoAfiliado)"><i class="glyphicon glyphicon-remove" ></i></button></td>
+                                      </tr>
+                                  </tbody>
+							</sa-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

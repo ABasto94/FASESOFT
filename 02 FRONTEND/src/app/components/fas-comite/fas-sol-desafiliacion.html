@@ -1,0 +1,56 @@
+<div id="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<h3> Solicitudes de desafiliación </h3>
+				</div>
+				<br>
+				<br>
+
+				<div class="card-body">
+					<div>
+
+						<label for="start">Desde:</label>
+
+						<input type="date" id="start" name="trip-start" value="" [(ngModel)]="inicial" min="1991-01-01"
+							max="2100-12-31">
+
+						<label for="start">Hasta:</label>
+
+						<input type="date" id="start" name="trip-start" value="" [(ngModel)]="final" min="1991-01-02"
+							max="2100-12-31" (blur)="comparacionFechas(inicial, final)">
+					</div>
+
+					<br>
+					<div>
+						<button class="btn btn-primary btn-lg"
+							(click)="getSolicitudesDesafiliacion()" >Consultar</button>
+					</div>
+					<sa-datatable *ngIf="fasAfiliado" paginationLength="true"
+						tableClass="table table-striped table-bordered table-hover" [options]="{
+											columnDefs: [
+												{ responsivePriority: 1, targets: 0 },
+												{ responsivePriority: 2, targets: -1 }
+											]}" width="90%">
+						<thead>
+							<tr>
+								<th data-class="expand">Nombres y apellidos</th>
+								<th data-hide="phone,tablet">Correo</th>
+								<th data-hide="phone,tablet">Fecha Retiro</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let afiliado of fasAfiliado" (click)="onSelectedFasAfiliados(afiliado)">
+								<td>{{afiliado.nombre}}</td>
+								<td>{{afiliado.correo}}</td>
+								<td>{{afiliado.fechaRetiro | date}}</td>
+
+							</tr>
+						</tbody>
+					</sa-datatable>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

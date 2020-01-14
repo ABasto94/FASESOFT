@@ -1,0 +1,58 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasSolConvenios FORM</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasSolConveniosForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="idSolicitud">{{metadata.idSolicitud.label}}</label>
+	
+	                                    <input type="number" id="idSolicitud" class="form-control"
+required	                                           name="idSolicitud" [(ngModel)]="fasSolConvenios.idSolicitud" >
+	                                    <div *ngIf="formErrors.idSolicitud" class="alert alert-danger">
+	                                           {{ formErrors.idSolicitud }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasAfiliadosCorreo">{{metadata.fasAfiliadosCorreo.label}}</label>
+                                 			<input type="string" id="fasAfiliadosCorreo" class="form-control"
+		                                       name="fasAfiliadosCorreo" [(ngModel)]="fasSolConvenios.fasAfiliadosCorreo" >
+		                                    <div *ngIf="formErrors.fasAfiliadosCorreo" class="alert alert-danger">
+		                                           {{ formErrors.fasAfiliadosCorreo }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasConveniosIdConvenio">{{metadata.fasConveniosIdConvenio.label}}</label>
+                                 			<input type="number" id="fasConveniosIdConvenio" class="form-control"
+required		                                       name="fasConveniosIdConvenio" [(ngModel)]="fasSolConvenios.fasConveniosIdConvenio" >
+		                                    <div *ngIf="formErrors.fasConveniosIdConvenio" class="alert alert-danger">
+		                                           {{ formErrors.fasConveniosIdConvenio }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

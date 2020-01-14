@@ -1,0 +1,51 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>Solicitud de Convenios</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasConveniosForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="Tipo Convenio">Convenio</label>
+										<select name="fasTipoConvenio" id="fasTipoConvenio" class="form-control" [(ngModel)]="fasConvenios.fasTipoConvIdTipoConv" (change)="cambiarmaximo(fasConvenios.fasTipoConvIdTipoConv)" required>
+											<option *ngFor="let i of fasTiposConvenioList" [value]="i.idTipoConvenio">{{i.tipo}}</option> 
+										</select>
+	                                    <div *ngIf="formErrors.fasTipoConvenio" class="alert alert-danger">
+	                                           {{ formErrors.fasTipoConvenio }}
+	                                    </div>
+									</div>
+									<br>
+
+									<div class="form-group" class="col-md-6">
+										<label for="numeroCuotas">Número de Cuotas <span style="color: red">{{fasConvenios.numeroCuotas}}</span></label>
+										<input type="range" name="amountRange" min="1" max="{{maximo}}" value="1" oninput="this.form.numeroCuotas.value=this.value" [(ngModel)]="fasConvenios.numeroCuotas"/>
+																		
+											<!--<input type="number" id="numeroCuotas" class="form-control" 
+required		                                       name="numeroCuotas" min="1" max="60" [(ngModel)]="fasConvenios.numeroCuotas" > -->
+										<div *ngIf="formErrors.numeroCuotas" class="alert alert-danger">
+											   {{ formErrors.numeroCuotas }}
+										</div>
+									</div>	
+	                                <div class="col-md-12">
+										<br>
+										<div align="center">
+	                                     <confirmation-modal  [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+										</div>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

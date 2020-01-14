@@ -1,0 +1,190 @@
+<div id="content">
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <div>
+
+            <div class="panel-body">
+
+              <carousel [interval]="5000">
+
+                <slide *ngFor="let tipoConvenio of TiposConveniosList"  class="imgCarousel">
+
+                  <a (click)="validarAcccesoConvenios()">
+                  <img class="img-responsive" [src]="tipoConvenio.urlConvenio" >
+                  </a>
+
+                </slide>
+
+              </carousel>
+
+              <br>
+
+              <br>
+
+              <br>
+
+              <br>
+              <sa-widgets-grid>
+
+       
+<!-- 
+                <div class="row">
+
+                  <div class="col-sm-6 col-md-6 col-lg-6" *ngFor="let slide of product2.slides">
+
+            
+
+                    <div class="product-content product-wrap clearfix">
+
+                      <div class="row">
+
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+
+                          <div class="product-image">
+
+                            <img [src]="slide.src" alt="Imagen 1" class="img-responsive responsive" >
+
+                            <span class="tag2 hot">
+
+                              HOT
+
+                            </span>
+
+                          </div>
+
+                        </div>
+
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+
+                          <div class="product-deatil">
+
+                            <h5 class="name">
+
+                              <a routerLink="../product-details">
+
+                                Product Name Title Here <span>Category</span>
+
+                              </a>
+
+                            </h5>
+
+                            <p class="price-container">
+
+                              <span>$99</span>
+
+                            </p>
+
+                            <span class="tag1"></span>
+
+                          </div>
+
+                          <div class="description">
+
+                            <p>Proin in ullamcorper lorem. Maecenas eu ipsum </p>
+
+                          </div>
+
+                          <div class="product-info smart-form">
+
+                            <div class="row">
+
+                              <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                <a (click)="(null)" class="btn btn-success">Add to cart</a>
+
+                              </div>
+
+                              <div class="col-md-6 col-sm-6 col-xs-6">
+
+                                <div class="rating">
+
+                                  <input type="radio" name="stars-rating" id="stars-rating-5">
+
+                                  <label for="stars-rating-5"><i class="fa fa-star"></i></label>
+
+                                  <input type="radio" name="stars-rating" id="stars-rating-4">
+
+                                  <label for="stars-rating-4"><i class="fa fa-star"></i></label>
+
+                                  <input type="radio" name="stars-rating" id="stars-rating-3">
+
+                                  <label for="stars-rating-3"><i class="fa fa-star text-primary"></i></label>
+
+                                  <input type="radio" name="stars-rating" id="stars-rating-2">
+
+                                  <label for="stars-rating-2"><i class="fa fa-star text-primary"></i></label>
+
+                                  <input type="radio" name="stars-rating" id="stars-rating-1">
+
+                                  <label for="stars-rating-1"><i class="fa fa-star text-primary"></i></label>
+
+                                </div>
+
+                              </div>
+
+                            </div>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                    </div>
+
+        
+
+                  </div>
+
+                </div>
+
+             -->
+
+              </sa-widgets-grid>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- modal -->
+<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+ <div class="modal-header">
+   <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+   <h4 class="modal-title">Alerta de autenticación</h4>
+ </div>
+ <div class="modal-body">
+  <p>
+   Señor usuario, no se encuentra autenticado en la plataforma,
+    por favor inicie sesión para continuar con la solicitud de convenio.  
+  </p>
+ </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-primary" (click)="hideChildModal()">
+     Aceptar
+   </button>
+ </div>
+</div>
+</div>
+</div>
+
+</div>

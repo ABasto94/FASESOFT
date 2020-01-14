@@ -1,0 +1,46 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>Modificación Ahorro Permanente.</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasAportesForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+										<label for="aporte">Aporte actual</label>
+										 <input type="number" id="aporte" class="form-control"
+required		                                       name="aporte" value="{{aporte}}" disabled >
+									</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="aporte">Nuevo aporte</label>
+                                 			<input type="number" id="aporte" class="form-control"
+required		                                       name="aporte" [(ngModel)]="fasAportes.aporte" [(ngModel)]="fasAhorros.aporte"  >
+												<!-- <input type="number" id="aporte" class="form-control"
+												required		                                       name="aporte"> -->
+		                                    <div *ngIf="formErrors.aporte" class="alert alert-danger">
+		                                           {{ formErrors.aporte }}
+		                                    </div>
+	                                	</div>
+	                             		
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

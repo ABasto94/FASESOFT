@@ -1,0 +1,58 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasRoles FORM</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasRolesForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="idRol">{{metadata.idRol.label}}</label>
+	
+	                                    <input type="number" id="idRol" class="form-control"
+required	                                           name="idRol" [(ngModel)]="fasRoles.idRol" >
+	                                    <div *ngIf="formErrors.idRol" class="alert alert-danger">
+	                                           {{ formErrors.idRol }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasAfiliadosCorreo">{{metadata.fasAfiliadosCorreo.label}}</label>
+                                 			<input type="string" id="fasAfiliadosCorreo" class="form-control"
+required		                                       name="fasAfiliadosCorreo" [(ngModel)]="fasRoles.fasAfiliadosCorreo" >
+		                                    <div *ngIf="formErrors.fasAfiliadosCorreo" class="alert alert-danger">
+		                                           {{ formErrors.fasAfiliadosCorreo }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasPerfilesIdPerfil">{{metadata.fasPerfilesIdPerfil.label}}</label>
+                                 			<input type="number" id="fasPerfilesIdPerfil" class="form-control"
+required		                                       name="fasPerfilesIdPerfil" [(ngModel)]="fasRoles.fasPerfilesIdPerfil" >
+		                                    <div *ngIf="formErrors.fasPerfilesIdPerfil" class="alert alert-danger">
+		                                           {{ formErrors.fasPerfilesIdPerfil }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

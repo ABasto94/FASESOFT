@@ -1,0 +1,33 @@
+<div *ngIf="actual?.length >0">
+  <header>
+    <h2>Estado Solicitud de Convenio Número: {{actual[0]}}</h2>
+  </header>
+  <!-- widget div-->
+  <div>
+  <!-- widget content -->
+    <div class="widget-body fuelux">
+        <div class="wizard">
+          <div class="steps-container">
+            <ul class="steps">
+              <li data-step="0" [ngClass]="{active: actual[1]==='RECHAZADO'}">
+                <span class="badge badge-info">0</span>Rechazado<span class="chevron"></span>
+              </li>
+              <li data-step="1" [ngClass]="{active: actual[1]==='REGISTRADO'}">
+                <span class="badge">1</span>Registrado<span class="chevron"></span>
+              </li>
+              <li data-step="2" [ngClass]="{active: actual[1]==='APROBADO'}">
+                <span class="badge">2</span>Aprobado<span class="chevron"></span>
+              </li>
+              <li data-step="3" [ngClass]="{active: actual[1]==='LEGALIZACION'}">
+                <span class="badge">3</span>En legalización<span class="chevron"></span>
+              </li>
+              <li data-step="4" [ngClass]="{active: actual[1]==='DESEMBOLSO'}">
+                <span class="badge">4</span>En desembolso<span class="chevron"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <!-- end widget content -->
+  </div>
+</div>

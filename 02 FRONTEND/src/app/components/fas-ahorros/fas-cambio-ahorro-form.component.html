@@ -1,0 +1,56 @@
+<div id="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3>Modificación Ahorro Permanente.</h3>
+                    </div>
+                </div>
+
+
+                <div class="card-body">
+                    <div>
+                        <div class="panel-body">
+                            <div>
+                                <form #fasAhorrosForm="ngForm" *ngIf="active">
+                                    
+                                    <div class="form-group" class="col-sm-4">
+                                        <label for="aporte">Aporte Actual</label>
+                                        <input type="number" id="aporte" class="form-control" required name="aporte"
+                                            value="{{fasAhorros2?.aporte}}" disabled>
+                                            <br>
+                                            <div  class="col-md-auto" *ngIf="fasAhorros.aporte >= 16562; else elseBlock">
+                                                <confirmation-modal [msg]='modalMessage'
+                                                (resp)="getConfirmationResponse($event);"></confirmation-modal >
+                                            </div>
+                                            <br>
+                                                <ng-template #elseBlock class="col-md-auto"><confirmation-modal [msg]='modalMessage2'>
+        
+                                                </confirmation-modal ></ng-template>
+                                        </div>
+
+
+                                    <div class="form-group" class="col-sm-4">
+                                        <label for="aporte">Nuevo aporte </label>
+                                        <input [attr.disabled]="deshabilitar? false : null"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 8"
+                                        type="text" maxlength="7"  id="aporte" class="form-control"
+                                        required name="aporte" [(ngModel)]="fasAhorros.aporte" >
+                                        <br>
+                                        <small class="col-sm-4" *ngIf="formErrors.aporte" class="alert alert-danger" min="16562">
+                                            {{ formErrors.aporte }}
+                                        </small>
+                                    </div>
+                                  
+                                    <br>
+                                
+                                    </form>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

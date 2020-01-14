@@ -1,0 +1,45 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-12 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasPerfilesList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+	                                	<th data-class="expand">ID Perfil</th>
+	                                	<th data-hide="phone,tablet">Tipo de Perfil</th>
+	                                    <th data-hide="phone,tablet">Acciones</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let fasPerfiles of fasPerfilesList" (click)="onSelectedFasPerfiles(fasPerfiles)">
+	                                	<td>{{fasPerfiles.idPerfil}}</td>
+	                                    <td>{{fasPerfiles.tipo}}</td>
+	                                    <td>
+											<fas-perfiles-form-edit-modal [fasPerfiles]='fasPerfiles'></fas-perfiles-form-edit-modal>
+	                                        
+										</td> 
+	                                </tr>
+	                            </tbody>
+							</sa-datatable>   
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

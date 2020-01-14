@@ -1,0 +1,47 @@
+<div class="navbar navbar-default">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+      (click)="toggleNavbar()">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <img src="assets/img/logosFasesoft/fasesoftLogo.png" class="img-responsive" style="width: 47px; height: 45px;">
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" [ngClass]="{ in: isOpen }">
+    <ul class="nav navbar-nav">
+      <li [ngClass]="seleccion == 'quienes-somos' ? 'active' : null" (click)="seleccionOpcionMenu('quienes-somos')">
+        <a routerLink="quienes-somos" routerLinkActive="active" class="nav-link active">¿Quiénes somos? </a>
+      </li>
+      <li [ngClass]="seleccion == 'creditos' ? 'active' : null" (click)="seleccionOpcionMenu('creditos')">
+        <a routerLink="creditos" routerLinkActive="active">Créditos</a>
+      </li>
+      <li [ngClass]="seleccion == 'ahorros' ? 'active' : null" (click)="seleccionOpcionMenu('ahorros')">
+        <a routerLink="ahorros" routerLinkActive="active">Ahorros</a>
+      </li>
+      <li [ngClass]="seleccion == 'convenios' ? 'active' : null" (click)="seleccionOpcionMenu('convenios')">
+        <a routerLink="convenios" routerLinkActive="active">Convenios</a>
+      </li>
+      <li [ngClass]="seleccion == 'comite' ? 'active' : null" (click)="seleccionOpcionMenu('comite')">
+        <a routerLink="comite" routerLinkActive="active">Comité</a>
+      </li>
+      <!-- <li [ngClass]="seleccion == 'comite' ? 'active' : null" (click)="obtenerPhoto()">
+          <a>traer foto</a>
+        </li> -->
+      
+      <li>
+
+      </li>
+
+    </ul>
+    <form class="navbar-form navbar-right" role="search">
+        <button *ngIf="!authenticated" (click)="login()" class="btn btn-primary">Afiliados</button>
+        <button *ngIf="authenticated" class="btn btn-primary" routerLink="../" routerLinkActive="active">Afiliados</button>
+      </form>
+  </div>
+</div>
+<router-outlet></router-outlet>

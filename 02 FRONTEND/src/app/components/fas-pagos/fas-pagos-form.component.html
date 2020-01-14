@@ -1,0 +1,98 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasPagos FORM</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasPagosForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="idPago">{{metadata.idPago.label}}</label>
+	
+	                                    <input type="number" id="idPago" class="form-control"
+required	                                           name="idPago" [(ngModel)]="fasPagos.idPago" >
+	                                    <div *ngIf="formErrors.idPago" class="alert alert-danger">
+	                                           {{ formErrors.idPago }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="cuotaTotal">{{metadata.cuotaTotal.label}}</label>
+                                 			<input type="number" id="cuotaTotal" class="form-control"
+required		                                       name="cuotaTotal" [(ngModel)]="fasPagos.cuotaTotal" >
+		                                    <div *ngIf="formErrors.cuotaTotal" class="alert alert-danger">
+		                                           {{ formErrors.cuotaTotal }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fechaDePago">{{metadata.fechaDePago.label}}</label>
+                                 			<input type="text" id="fechaDePago" class="form-control"
+required		                                       name="fechaDePago" [(ngModel)]="fasPagos.fechaDePago" >
+		                                    <div *ngIf="formErrors.fechaDePago" class="alert alert-danger">
+		                                           {{ formErrors.fechaDePago }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="saldo">{{metadata.saldo.label}}</label>
+                                 			<input type="number" id="saldo" class="form-control"
+required		                                       name="saldo" [(ngModel)]="fasPagos.saldo" >
+		                                    <div *ngIf="formErrors.saldo" class="alert alert-danger">
+		                                           {{ formErrors.saldo }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasCreditosIdCredito">{{metadata.fasCreditosIdCredito.label}}</label>
+                                 			<input type="number" id="fasCreditosIdCredito" class="form-control"
+required		                                       name="fasCreditosIdCredito" [(ngModel)]="fasPagos.fasCreditosIdCredito" >
+		                                    <div *ngIf="formErrors.fasCreditosIdCredito" class="alert alert-danger">
+		                                           {{ formErrors.fasCreditosIdCredito }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="cuotaIntereses">{{metadata.cuotaIntereses.label}}</label>
+                                 			<input type="number" id="cuotaIntereses" class="form-control"
+required		                                       name="cuotaIntereses" [(ngModel)]="fasPagos.cuotaIntereses" >
+		                                    <div *ngIf="formErrors.cuotaIntereses" class="alert alert-danger">
+		                                           {{ formErrors.cuotaIntereses }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="cuotaSeguro">{{metadata.cuotaSeguro.label}}</label>
+                                 			<input type="number" id="cuotaSeguro" class="form-control"
+required		                                       name="cuotaSeguro" [(ngModel)]="fasPagos.cuotaSeguro" >
+		                                    <div *ngIf="formErrors.cuotaSeguro" class="alert alert-danger">
+		                                           {{ formErrors.cuotaSeguro }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="cuotaDeuda">{{metadata.cuotaDeuda.label}}</label>
+                                 			<input type="number" id="cuotaDeuda" class="form-control"
+required		                                       name="cuotaDeuda" [(ngModel)]="fasPagos.cuotaDeuda" >
+		                                    <div *ngIf="formErrors.cuotaDeuda" class="alert alert-danger">
+		                                           {{ formErrors.cuotaDeuda }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

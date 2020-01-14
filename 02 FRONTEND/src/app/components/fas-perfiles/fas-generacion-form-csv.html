@@ -1,0 +1,56 @@
+<div id="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div>
+					<h3>GENERACIÓN ARCHIVO DE INCENTIVO AL AHORRO</h3>
+					<div class="form-group" class="col-md-3">
+						<label for="mes">Mes de generación del archivo</label>
+						<select type="date" [(ngModel)]="mesGeneracion" required>
+							<option *ngFor="let mes of meses; let indice = index"
+							[value]="indice+1">{{mes}}</option>
+						   </select>
+					</div>
+					<div class="form-group" class="col-md-3">
+						<label for="año">Año de generación del archivo</label>
+						<select type="date" [(ngModel)]="anioGeneracio">
+								<option *ngFor="let numero of [0,1,2,3,4,5,6,7]"
+								[value]="anioActual-numero">{{anioActual-numero}}</option>
+							   </select>
+					</div>
+					<br>
+				</div>
+				<div class="form-group" class="col-md-3">
+					<button class="btn btn-primary btn-lg" (click)="getAfiliadoAporte()"
+						[disabled]="!anioGeneracio || !mesGeneracion">Cargar</button>
+				</div>
+				<div id="tabla">
+					<sa-datatable *ngIf="fasGeneracionCsv" paginationLength="true"
+						tableClass="table table-striped table-bordered table-hover" [options]="{
+			columnDefs: [
+				{ responsivePriority: 1, targets: 0 },
+				{ responsivePriority: 2, targets: -1 }
+			]}" width="100%">
+						<thead>
+							<tr>
+								<th data-class="expand">Identificación</th>
+								<th data-hide="phone,tablet">Calculo beneficio</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let afiliadoAporte of fasGeneracionCsv"
+								(click)="onSelectedFasAfiliados(afiliadoAporte)">
+								<td>{{afiliadoAporte.identificacion}}</td>
+								<td>{{afiliadoAporte.calculoBeneficio}}</td>
+							</tr>
+						</tbody>
+					</sa-datatable>
+				</div>
+				<div id="boton">
+					<button *ngIf="fasGeneracionCsv" class="btn btn-primary btn-lg" [disabled]="!habiliatador"
+						(click)="generarArchivoCsv()">Generar archivo</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

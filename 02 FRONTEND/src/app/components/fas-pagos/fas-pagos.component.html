@@ -1,0 +1,82 @@
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">
+						<h3>Funcionalidad Fas Pagos</h3>
+					</div>
+<!-- ESTO ES DE SOLICITUDES DE DESAFILIACION -->
+
+<h3>
+    Solicitudes de desafiliación 
+</h3>
+<div class="col-md-4">
+    <label for="start">Desde:</label>
+
+<input type="date" id="start" name="trip-start"
+       value=""
+       min="1991-01-01" max="2100-12-31" class="form-control">
+	</div>
+<div class="col-md-4">
+       <label for="start">Hasta:</label>
+
+<input type="date" id="start" name="trip-start"
+       value=""
+       min="1991-01-01" max="2100-12-31" class="form-control"> 
+</div>
+<!-- <div class="card-body">
+	<div class="col-xs-12 col-md-12">
+		<div class="panel-body">
+			<sa-datatable *ngIf="fasPagosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+				[options]="{
+					columnDefs: [
+						{ responsivePriority: 1, targets: 0 },
+						{ responsivePriority: 2, targets: -1 }
+					]}" width="100%">
+				<thead>
+					<tr>
+						<th data-class="expand">id pago</th>
+						<th data-hide="phone,tablet">pago</th>
+						<th data-hide="phone,tablet">sadsad</th>
+						<th data-hide="phone,tablet">adsdassa</th>
+						<th data-hide="phone,tablet">Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let fasPagos of fasPagosList" (click)="onSelectedFasPagos(fasPagos)">
+						<td>{{fasPagos.idPago}}</td>
+						<td>{{fasPagos.cuotaTotal}}</td>
+						<td>{{fasPagos.fechaDePago}}</td>
+						<td>{{fasPagos.saldo}}</td>
+						<td>{{fasPagos.fasCreditosIdCredito}}</td>
+						<td>{{fasPagos.cuotaIntereses}}</td>
+						<td>{{fasPagos.cuotaSeguro}}</td>
+						<td>{{fasPagos.cuotaDeuda}}</td>
+						<td>
+							<fas-pagos-form-modal  [fasPagos]='fasPagos'></fas-pagos-form-modal>
+
+							<confirmation-modal *ngIf='modalDeleteMessage' 
+												[msg]='modalDeleteMessage' 
+												[data]='fasPagos'
+												(resp)="getConfirmationResponse($event);">
+							</confirmation-modal>
+						</td> 
+					</tr>
+				</tbody>
+			</sa-datatable>
+			
+			
+		</div>
+	</div>
+</div> -->
+
+
+
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!1 -->
+					<!-- <fas-pagos-list ></fas-pagos-list> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

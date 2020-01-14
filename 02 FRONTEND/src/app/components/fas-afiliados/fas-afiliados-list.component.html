@@ -1,0 +1,79 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasAfiliados LIST {{salidaTest}}</h3>
+	                </div>
+	            </div>
+	            <div class="card-header">
+	                <div>
+	                    <button type="button" class="btn btn-primary btn-lg" (click)= "advancedSearch()">
+	                        <span class="icon glyphicon glyphicon-search"></span><span class="title"> Advanced search</span>
+	                    </button>
+	                    <fas-afiliados-form-modal></fas-afiliados-form-modal>
+	                </div>
+	            </div>
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-12 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasAfiliadosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+	                                	<th data-class="expand">{{ metadata.correo.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.nombre.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.apellido.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.telefono.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.direccion.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.identificacion.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.tipoId.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.estado.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.fechaRetiro.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.mora.label }}</th>
+	                                    <th data-hide="phone,tablet">Acciones</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let fasAfiliados of fasAfiliadosList" (click)="onSelectedFasAfiliados(fasAfiliados)">
+	                                	<td>{{fasAfiliados.correo}}</td>
+	                                    <td>{{fasAfiliados.nombre}}</td>
+	                                    <td>{{fasAfiliados.apellido}}</td>
+	                                    <td>{{fasAfiliados.telefono}}</td>
+	                                    <td>{{fasAfiliados.direccion}}</td>
+	                                    <td>{{fasAfiliados.identificacion}}</td>
+	                                    <td>{{fasAfiliados.tipoId}}</td>
+	                                    <td>{{fasAfiliados.estado}}</td>
+	                                    <td>{{fasAfiliados.fechaRetiro}}</td>
+	                                    <td>{{fasAfiliados.mora}}</td>
+	                                    <td>
+	                                        <fas-afiliados-form-modal  [fasAfiliados]='fasAfiliados'></fas-afiliados-form-modal>
+
+	                                        <confirmation-modal *ngIf='modalDeleteMessage' 
+	                                                            [msg]='modalDeleteMessage' 
+	                                                            [data]='fasAfiliados'
+	                                                            (resp)="getConfirmationResponse($event);">
+	                                        </confirmation-modal>
+										</td> 
+	                                </tr>
+	                            </tbody>
+	                        </sa-datatable>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

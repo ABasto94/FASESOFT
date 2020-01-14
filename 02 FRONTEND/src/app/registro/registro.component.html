@@ -1,0 +1,189 @@
+<div class="main" [hidden]="ocultarFormulario">
+
+  <!-- Sign up form -->
+  <section class="signup">
+    <div class="container">
+      <div class="signup-content">
+
+        <div class="signup-form">
+
+
+          <div class="panel-body" style="width: 100%">
+
+            <form id="checkout-form" name="formularioAfiliado" class="smart-form" [saUiValidate]="validationOptions"
+              novalidate="novalidate" [formGroup]="formularioAfiliado">
+              <fieldset>
+                <section>
+                  <h2 class="form-title">Registro de afiliación</h2>
+                </section>
+                <div>
+                  <section>
+                    <label class="input"> <i class="icon-prepend fa fa-user"></i>
+                      <input class="form-control" type="text" placeholder="Nombres" formControlName="nombres"
+                        name="nombres">
+                    </label>
+                  </section>
+                  <section>
+                    <label class="input "> <i class="icon-prepend fa fa-user"></i>
+                      <input class="form-control" type="text" placeholder="Apellidos" formControlName="apellidos"
+                        name="apellidos">
+                    </label>
+                  </section>
+                </div>
+                <div class="row">
+                  <section class="col col-6">
+                    <label class="input">
+                      <input class="form-control" type="text" placeholder="No. identificación"
+                        formControlName="identificacion" name="identificacion">
+                    </label>
+                  </section>
+                  <section class="col col-6">
+                    <label class="input">
+                      <input class="form-control" type="text" placeholder="Ciudad" formControlName="ciudad"
+                        maxlength="15" name="ciudad">
+                    </label>
+                  </section>
+                </div>
+                <div class="row">
+                  <section class="col col-6">
+                    <label class="input"> <i class="icon-prepend fa fa-envelope-o"></i>
+                      <input class="form-control" type="email" name="correo" placeholder="Correo"
+                        formControlName="correo">
+                    </label>
+                  </section>
+                  <section class="col col-6">
+                    <label class="input"> <i class="icon-prepend fa fa-phone"></i>
+                      <input class="form-control" type="text" name="phone" placeholder="Celular" name="telefono"
+                        formControlName="celular" name="celular" maxlength="10">
+                    </label>
+                  </section>
+                </div>
+                <div class="row">
+                  <section class="col col-6">
+                    <label class="input">
+                      <input class="form-control" type="text" placeholder="dirección" name="direccion"
+                        formControlName="direccion" maxlength="30">
+                    </label>
+                  </section>
+                  <section class="col col-6">
+                    <label class="input">
+                      <input class="form-control" type="text" placeholder="Ciudad residencia" name="ciudadResidencia"
+                        formControlName="ciudadResidencia" name="ciudadResidencia" maxlength="15">
+                    </label>
+                  </section>
+                </div>
+                <div class="row">
+                  <section class="col col-6">
+                    <label class="input"> <i class="icon-prepend fa fa-credit-card"></i>
+                      <input class="form-control" type="text" placeholder="Cuenta" formControlName="cuenta"
+                        name="cuenta">
+                    </label>
+                  </section>
+                  <section class="col col-6">
+                    <label class="input">
+                      <input class="form-control" type="text" placeholder="Banco" formControlName="banco" name="banco">
+                    </label>
+                  </section>
+                </div>
+                <section>
+                  <label class="input"> <i class="icon-prepend fa fa-money"></i>
+                    <input onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 8" class="form-control" [min]="valorMinimo" [max]="9000000" type="number" placeholder="Aporte"
+                      formControlName="aporte" name="aporte">
+                  </label>
+                </section>
+                <section *ngIf="MostrarMensaje">
+                  <label class="input" style="color: red;"> Su registro de afiliación se encuentra pendiente de
+                    aprobación, por favor intente mas tarde o comuniquese con el area encargada
+                  </label>
+                </section>
+                <section *ngIf="MostrarMensaje2">
+                  <label class="input" style="color: red;"> No estas registrado en el sistema por favor intenta mas
+                    tarde </label>
+                </section>
+                <section *ngIf="MostrarMensaje3">
+                  <label class="input" style="color: red;"> No se puede registrar hasta la fecha fin de penalización por
+                    retiro que es: <strong> {{fechaFinMulta | date:'yyyy/MM/dd'}} </strong> </label>
+                </section>
+                <footer>
+                  <button type="button" class="btn btn-default" routerLink="/home/quienes-somos"
+                    routerLinkActive="active">
+                    Cancelar
+                  </button>
+                  <button class="btn btn-primary" type="submit" [disabled]="Deshabilitar"
+                    (click)="abrirModal(formularioAfiliado.valid)">
+                    Enviar
+                  </button>
+                </footer>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+        <div style="align-self: center;">
+          <figure><img src="./assets/img/afiliate2.png" alt="sing up image"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- modal -->
+  <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Teminos y condiciones</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+            Autorizo a <strong>ASESOFTWARE</strong> para descontar por nómina de mi salario,cesantías,
+            primas,prestaciones sociales,bonificaciones,indemnizaciones, liquidaciones, así como cualquier otra suma a
+            laque tenga derecho, las cuotas referentes a lasolicitud de afiliación definida con anterioridad. Declaro
+            conocer los estatutos y reglamentos vigentes a la fecha de corte.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="lgModal.hide()">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="enviarFormulario(formularioAfiliado.valid)">
+            Aceptar terminos y condiciones
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div bsModal #lgModalObservaciones="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Observaciones de rechazo</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+            Su solicitud fue rechazada, el motivo del rechazo es: {{observacionesRechazo}} .
+        </p>
+        <br>
+        <p>Por favor intente de nuevo</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="lgModalObservaciones.hide()">
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>

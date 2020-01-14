@@ -1,0 +1,69 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasTiposDeCredito LIST {{salidaTest}}</h3>
+	                </div>
+	            </div>
+	            <div class="card-header">
+	                <div>
+	                    <button type="button" class="btn btn-primary btn-lg" (click)= "advancedSearch()">
+	                        <span class="icon glyphicon glyphicon-search"></span><span class="title"> Advanced search</span>
+	                    </button>
+	                    <fas-tipos-de-credito-form-modal></fas-tipos-de-credito-form-modal>
+	                </div>
+	            </div>
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-12 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasTiposDeCreditoList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+	                                	<th data-class="expand">{{ metadata.idTipo.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.tipo.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.tasa.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.descripcion.label }}</th>
+	                                    <th data-hide="phone,tablet">Acciones</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let fasTiposDeCredito of fasTiposDeCreditoList" (click)="onSelectedFasTiposDeCredito(fasTiposDeCredito)">
+	                                	<td>{{fasTiposDeCredito.idTipo}}</td>
+	                                    <td>{{fasTiposDeCredito.tipo}}</td>
+	                                    <td>{{fasTiposDeCredito.tasa}}</td>
+	                                    <td>{{fasTiposDeCredito.descripcion}}</td>
+	                                    <td>
+	                                        <fas-tipos-de-credito-form-modal  [fasTiposDeCredito]='fasTiposDeCredito'></fas-tipos-de-credito-form-modal>
+
+	                                        <confirmation-modal *ngIf='modalDeleteMessage' 
+	                                                            [msg]='modalDeleteMessage' 
+	                                                            [data]='fasTiposDeCredito'
+	                                                            (resp)="getConfirmationResponse($event);">
+	                                        </confirmation-modal>
+										</td> 
+	                                </tr>
+	                            </tbody>
+	                        </sa-datatable>
+	                        
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

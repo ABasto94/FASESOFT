@@ -1,0 +1,72 @@
+<div id="divExtracto">
+    <ng-container #extractos>
+      </ng-container>
+</div>
+<div>
+
+  <div class="row">
+    <sa-big-breadcrumbs [items]="['Extractos', 'Generar Extractos']" icon="table"
+      class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+    </sa-big-breadcrumbs>
+  </div>
+  <!-- widget grid -->
+  <sa-widgets-grid>
+    <div class="card-body">
+      <div class="col-xs-12 col-md-12">
+        <div class="panel-body">
+            <label for="start">Seleccione mes</label>
+           <select type="date" [(ngModel)]="mes">
+            <option *ngFor="let mes of meses; let indice = index"
+            [value]="indice+1">{{mes}}</option>
+           </select>
+           <label for="start">año</label>
+           <select type="date" [(ngModel)]="anio">
+            <option *ngFor="let numero of [0,1,2,3,4]"
+            [value]="anioActual-numero">{{anioActual-numero}}</option>
+           </select>
+            <button class="btn btn-primary" (click)="obtenerExtractos()">Cargar</button>    
+          <sa-datatable *ngIf="extractosGenerados.length>0" paginationLength="true"
+            tableClass="table table-striped table-bordered table-hover " style="text-align: center;" [options]="{
+        columnDefs: [
+        { responsivePriority: 1, targets: 0 },
+        { responsivePriority: 2, targets: -1 }
+        ]}" width="100%">
+            <thead>
+              <tr>
+                <th><input type="checkbox" name="checkbox-inline" [ngModel]="seleccionoTodos" (ngModelChange)="seleccionarTodos($event)"></th>
+                <th>usuario</th>
+                <th>nombre</th>
+                <th>apellido</th>
+                <th>telefono</th>
+                <th>Total ahorro permanente</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let extracto of extractosGenerados;let indice = index;">
+                <td>
+                    <input type="checkbox" [(ngModel)]="extracto.seleccionado" name="checkbox-inline">
+                </td>
+                <td> <span>{{extracto.ahorroAfiliado.correo}}</span> </td>
+                <td> <span>{{extracto.ahorroAfiliado.nombre}}</span> </td>
+                <td> <span>{{extracto.ahorroAfiliado.apellido}}</span> </td>
+                <td> <span>{{extracto.ahorroAfiliado.telefono}}</span> </td>
+                <td> <span>{{extracto.ahorroAfiliado.monto}}</span> </td>
+              </tr>
+            </tbody>
+          </sa-datatable>
+          <br>
+          <button [disabled]="activarBarraCarga" *ngIf="extractosGenerados.length>0" type="button" class="btn btn-primary btn-lg btn-block" (click)="EnviarExtractos()">
+              Generar extractos
+            </button>
+            <br>
+            <div class="progress progress-sm progress-striped active" *ngIf="activarBarraCarga" >
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" [style.width]="porcentajeBarraCarga + '%'"></div>
+              </div>
+        </div>
+      </div>
+    </div>
+  </sa-widgets-grid>
+
+</div>
+
+<br><br><br>

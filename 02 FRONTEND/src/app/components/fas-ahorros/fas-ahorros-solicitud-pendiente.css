@@ -1,0 +1,19 @@
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 4.5%;
+}
+
+[type="submit"] {
+  margin-top: 3%;
+  width: 400px;
+}
+
+#contenedor-detalle-solicitud {
+  display: none;
+  padding: 20%;
+}
+
+#pdf-credito {
+  text-align: center;
+}

@@ -1,0 +1,129 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-xs-12 col-md-12">
+                    <table class="table table-striped">
+                        <!--
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Operator</th>
+                                <th>Value</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        -->
+                        <tbody>
+                            <td>
+                                <tr>
+                                    <button type="button" class="btn btn-primary" (click)= "addFilterByElement()">
+                                        <span class="icon glyphicon glyphicon-list"></span><span class="title"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" (click)= "addOrderByElement()">
+                                        <span class="icon glyphicon glyphicon-sort"></span><span class="title"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-primary" (click)= "addFromToElement()">
+                                        <span class="icon glyphicon glyphicon-resize-small"></span><span class="title"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default" (click)= "saveSearch()">
+                                        <span class="icon glyphicon glyphicon-ok"></span><span class="title"></span>
+                                    </button>
+                                </tr>
+                                <tr *ngFor="let search of filterBySearchList">                                    
+                                    <td>
+                                        FILTER BY:
+                                    </td> 
+                                    <td>
+                                        <select class="form-control" id="field" required placeholder="Field"
+                                                [(ngModel)]="search.field" name="field" 
+                                                #field="ngModel" >
+                                            <option *ngFor="let field of fieldList" [value]="field.name">{{field.label}}</option>
+                                        </select>
+                                    </td>
+                                    <td *ngIf="getOperatorList(search.field, search)">
+                                        <select class="form-control" id="operator" required
+                                                [(ngModel)]="search.operator" name="operator" 
+                                                #operator="ngModel" >
+                                            <option *ngFor="let operator of getOperatorList(search.field, search)" [value]="operator.value">{{operator.symbol}}</option>
+                                        </select>
+                                    </td>
+                                    <td *ngIf="getOperatorList(search.field, search)">
+                                        <input type="text" class="form-control" required placeholder="Value"
+                                               #box (keyup)="onInputKey(search)"
+                                               [(ngModel)]="search.value" name="value"  #value="ngModel" >
+                                    </td>
+                                    <td>
+                                        <span  *ngIf="search.validation" class="label label-success">{{search.validationComment}}</span>
+                                        <span  *ngIf="!search.validation" class="label label-danger">{{search.validationComment}}</span>                                       
+                                    </td>
+                                    <td>                                       
+                                        <button type="button" class="btn btn-warning" (click)= "deleteFilterByElement(search)">
+                                            <span class="icon glyphicon glyphicon-trash"></span><span class="title"></span>
+                                        </button>
+                                    </td>   
+                                </tr>
+                                <tr *ngFor="let search of orderBySearchList">                                    
+                                    <td>
+                                        ORDER BY:
+                                    </td> 
+                                    <td>
+                                        <select class="form-control" id="field" required placeholder="Field"
+                                                [(ngModel)]="search.field" name="field" 
+                                                #field="ngModel" >
+                                            <option *ngFor="let field of fieldList" [value]="field.name">{{field.label}}</option>
+                                        </select>
+                                    </td>
+                                    <td *ngIf="getOperatorList(search.field, search)">
+                                        <select class="form-control" id="operator" required
+                                                [(ngModel)]="search.operator" name="operator" 
+                                                #operator="ngModel" >
+                                            <option *ngFor="let operator of getOperatorList(search.field, search)" [value]="operator.value">{{operator.symbol}}</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <span  *ngIf="search.validation" class="label label-success">{{search.validationComment}}</span>
+                                        <span  *ngIf="!search.validation" class="label label-danger">{{search.validationComment}}</span>                                       
+                                    </td>
+                                    <td>                                       
+                                        <button type="button" class="btn btn-warning" (click)= "deleteOrderByElement(search)">
+                                            <span class="icon glyphicon glyphicon-trash"></span><span class="title"></span>
+                                        </button>
+                                    </td>   
+                                </tr>
+                                <tr *ngIf="fromValue">                                    
+                                    <td>
+                                        RANGE BY:
+                                    </td> 
+                                    <td>
+                                        <input type="text" class="form-control" required placeholder="from"
+                                               [(ngModel)]="fromValue.value" name="value"  #value="ngModel" 
+                                               #box (keyup)="onFromValueKey(fromValue)">
+                                    </td>
+                                    <td>
+                                        <span  *ngIf="fromValue.validation" class="label label-success">{{fromValue.validationComment}}</span>
+                                        <span  *ngIf="!fromValue.validation" class="label label-danger">{{fromValue.validationComment}}</span>                                       
+                                    </td>
+                                    <td *ngIf="fromValue.validation">
+                                        <input type="text" class="form-control" required placeholder="to"
+                                               [(ngModel)]="toValue.value" name="value"  #value="ngModel" 
+                                               #box (keyup)="onToValueKey(toValue)">
+                                    </td>
+                                    <td *ngIf="fromValue.validation">
+                                        <span  *ngIf="toValue.validation" class="label label-success">{{toValue.validationComment}}</span>
+                                        <span  *ngIf="!toValue.validation" class="label label-danger">{{toValue.validationComment}}</span>                                       
+                                    </td>
+                                    <td>                                       
+                                        <button type="button" class="btn btn-warning" (click)= "deleteFromToByElement(fromValue)">
+                                            <span class="icon glyphicon glyphicon-trash"></span><span class="title"></span>
+                                        </button>
+                                    </td>   
+                                </tr>                                
+                            </td>                   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

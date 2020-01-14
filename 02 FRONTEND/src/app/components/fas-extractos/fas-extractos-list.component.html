@@ -1,0 +1,59 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <!-- <div class="card-header">
+	                <div class="card-title">
+	                    <h3>fasExtractos LIST {{salidaTest}}</h3>
+	                </div>
+	            </div> -->
+	            <!-- <div class="card-header">
+	                <div>
+	                    <button type="button" class="btn btn-primary btn-lg" (click)= "advancedSearch()">
+	                        <span class="icon glyphicon glyphicon-search"></span><span class="title"> Advanced search</span>
+	                    </button>
+	                </div>
+	            </div> -->
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-11 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasExtractosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+	                                	<th data-hide="phone,tablet">Fecha generación</th>
+	                                	<th data-hide="phone,tablet">Mes del extracto</th>
+										
+	                                </tr>
+	                            </thead>
+	                            
+										<tbody>
+											<tr *ngFor="let fasExtractos of extractoAfiliado" (click)="onSelectedFasExtractos(fasExtractos)">
+											<!----	<td>{{fasExtractos.correo}}</td>-->
+												<td>{{fasExtractos.fechaExtracto | date}}</td>
+												<td><a href={{fasExtractos.urlExtracto}}>{{fasExtractos.nombreExtracto}}</a></td>
+												
+										
+											</tr>
+										</tbody>	                                
+	                        </sa-datatable>
+	                        
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

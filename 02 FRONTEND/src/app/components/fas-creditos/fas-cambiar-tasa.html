@@ -1,0 +1,19 @@
+<div class="form-group" class="col-md-4">
+    <label for="tasaReal">Tasa</label>
+    <br>
+    <input type="number" id="tasaReal"  class="form-control" required name="tasaReal"
+        [(ngModel)]="fasCreditos.tasaReal" >
+    <div *ngIf="formErrors.tasaReal" class="alert alert-danger" >
+        {{ formErrors.tasaReal }}
+    </div>
+    <input>
+    </div>
+    <br>
+<br>
+<div>
+    <button (click)="put()">
+        Guardar 
+    </button>
+</div>
+<br>
+<br>

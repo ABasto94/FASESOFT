@@ -1,0 +1,11 @@
+.tamanoimg{
+    width: 500px;
+    height: 500px;
+    max-width: 500px;
+    max-height: 500px;   
+}
+.texto{
+    font-weight: bold;
+    font-size: 40px;
+    text-align: left;
+}

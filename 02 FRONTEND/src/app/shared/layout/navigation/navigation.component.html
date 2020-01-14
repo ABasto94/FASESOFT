@@ -1,0 +1,42 @@
+<aside id="left-panel">
+
+  <!-- User info -->
+  <sa-login-info></sa-login-info>
+  <!-- end user info -->
+
+  <nav>
+
+    <ul saSmartMenu>
+      <li routerLinkActive="active">
+        <a routerLink="/layout/home">
+            <i class="fa fa-lg fa-fw fa-home txt-color-blue"></i>Inicio
+        </a>
+      </li>
+      <li *ngFor="let descripcion of descripciones">
+        <a [title]="descripcion" [ngSwitch]="descripcion">
+          <i *ngSwitchCase="'accesos'" class="fa fa-lg fa-fw fa-mail-reply-all txt-color-blue"></i>
+          <i *ngSwitchCase="'afiliados'" class="fa fa-lg fa-fw fa-user txt-color-blue"></i>
+          <i *ngSwitchCase="'ahorros'" class="fa fa-lg fa-fw fa-money txt-color-blue"></i>
+          <i *ngSwitchCase="'aportes'" class="fa fa-lg fa-fw fa-file-powerpoint-o txt-color-blue"></i>
+          <i *ngSwitchCase="'convenios'" class="fa fa-lg fa-fw fa-file-word-o txt-color-blue"></i>
+          <i *ngSwitchCase="'creditos'" class="fa fa-lg fa-fw fa-credit-card txt-color-blue"></i>
+          <i *ngSwitchCase="'pagos'" class="fa fa-lg fa-fw fa-git-square txt-color-blue"></i>
+          <i *ngSwitchCase="'perfiles'" class="fa fa-lg fa-fw fa-list txt-color-blue"></i>
+          <i *ngSwitchCase="'permisos'" class="fa fa-lg fa-fw fa-lock txt-color-blue"></i>
+          <i *ngSwitchCase="'roles'" class="fa fa-lg fa-fw fa-group txt-color-blue"></i>
+          <i *ngSwitchCase="'gestion'" class="fa fa-lg fa-fw fa-gears txt-color-blue"></i>
+          <i *ngSwitchCase="'extractos'" class="fa fa-lg fa-fw fa-file-pdf-o txt-color-blue"></i>
+          <span class="menu-item-parent">{{descripcion | i18n}}</span></a>
+        <ul>
+          <li routerLinkActive="active" *ngFor="let acceso of accesos">
+            <a [routerLink]="acceso.componente" *ngIf="acceso.descripcion==descripcion">{{acceso.nombre| i18n}}</a>
+          </li>
+        </ul>
+      </li>
+      
+    </ul>
+  </nav>
+
+  <sa-minify-menu></sa-minify-menu>
+
+</aside>

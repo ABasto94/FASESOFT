@@ -1,0 +1,67 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasPermisos LIST {{salidaTest}}</h3>
+	                </div>
+	            </div>
+	            <div class="card-header">
+	                <div>
+	                    <button type="button" class="btn btn-primary btn-lg" (click)= "advancedSearch()">
+	                        <span class="icon glyphicon glyphicon-search"></span><span class="title"> Advanced search</span>
+	                    </button>
+	                    <fas-permisos-form-modal></fas-permisos-form-modal>
+	                </div>
+	            </div>
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-12 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasPermisosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+	                                	<th data-class="expand">{{ metadata.idPermiso.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.fasPerfilesIdPerfil.label }}</th>
+	                                	<th data-hide="phone,tablet">{{ metadata.fasAccesosIdAcceso.label }}</th>
+	                                    <th data-hide="phone,tablet">Acciones</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let fasPermisos of fasPermisosList" (click)="onSelectedFasPermisos(fasPermisos)">
+	                                	<td>{{fasPermisos.idPermiso}}</td>
+	                                    <td>{{fasPermisos.fasPerfilesIdPerfil}}</td>
+	                                    <td>{{fasPermisos.fasAccesosIdAcceso}}</td>
+	                                    <td>
+	                                        <fas-permisos-form-modal  [fasPermisos]='fasPermisos'></fas-permisos-form-modal>
+
+	                                        <confirmation-modal *ngIf='modalDeleteMessage' 
+	                                                            [msg]='modalDeleteMessage' 
+	                                                            [data]='fasPermisos'
+	                                                            (resp)="getConfirmationResponse($event);">
+	                                        </confirmation-modal>
+										</td> 
+	                                </tr>
+	                            </tbody>
+	                        </sa-datatable>
+	                        
+	                        
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

@@ -1,0 +1,80 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>Formulario Convenios</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasTiposConvenioForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="tipo">Tipo</label>
+											<input type="string" maxlength="50" id="tipo" class="form-control"
+required		                                       name="tipo" [(ngModel)]="fasTiposConvenio.tipo" >
+		                                    <div *ngIf="formErrors.tipo" class="alert alert-danger">
+		                                           {{ formErrors.tipo }}
+		                                    </div>
+										</div>
+										<div class="form-group" class="col-md-6">
+		                                    <label for="tasa">Tasa (<span style="color: red">{{fasTiposConvenio.tasa}}</span>)</label>
+                                 			<input type="range" name="amountRange" step="0.01" min="0" max="1" value="1" oninput="this.form.tasa.value=this.value" [(ngModel)]="fasTiposConvenio.tasa" required/>
+		                                    <div *ngIf="formErrors.tasa" class="alert alert-danger">
+		                                           {{ formErrors.tasa }}
+		                                    </div>
+										</div>
+										<div class="form-group" class="col-md-6">
+											<label for="cuotasMaximas">Cuotas Maximas (<span style="color: red">{{fasTiposConvenio.cuotasMaximas}}</span>)</label>
+											<input type="range" name="amountRange" min="1" max="60" value="1" oninput="this.form.cuotasMaximas.value=this.value" [(ngModel)]="fasTiposConvenio.cuotasMaximas" required/>
+		                                    <div *ngIf="formErrors.cuotasMaximas" class="alert alert-danger">
+		                                           {{ formErrors.cuotasMaximas }}
+		                                    </div>
+										</div>
+										<div class="form-group" class="col-md-6">
+											<label for="estado">Estado</label>
+											<select name="estado" id="estado" class="form-control" [(ngModel)]="fasTiposConvenio.estado" required>
+												<option value="ACTIVO" selected>Activo</option> 
+												<option value="INACTIVO">Inactivo</option>
+											</select>
+		                                    <div *ngIf="formErrors.estado" class="alert alert-danger">
+		                                           {{ formErrors.estado }}
+		                                    </div>
+										</div>										
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="descripcion">Descripción</label>
+                                 			<input type="string" id="descripcion" class="form-control"
+required		                                       name="descripcion" [(ngModel)]="fasTiposConvenio.descripcion" >
+		                                    <div *ngIf="formErrors.descripcion" class="alert alert-danger">
+		                                           {{ formErrors.descripcion }}
+		                                    </div>
+	                                	</div>
+										<div class="form-group" class="col-md-6" *ngIf="isNewFasTiposConvenio">
+											<label for="urlConvenio">Imagen</label>
+											<label>
+												<input type="file" id="urlConvenio" class="form-control" (change)="detectarFiles($event)"  required>
+											</label>
+											<button class="btn btn-primary" 
+											   [disabled]= "!selectedFiles" 
+											   (click)= "uploadFile()">
+											   Cargar Imagen
+											</button>
+											<label>La imagen debe ser de 1400x620 px</label>
+										</div>
+	                                <div class="col-md-12">
+	                                    <br>
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

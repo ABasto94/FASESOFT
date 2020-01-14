@@ -1,0 +1,69 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-xs-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+						<h3>Mis Solicitudes {{salidaTest}}</h3>
+					</div>
+				</div>
+				<div style="margin-bottom: 10px;">
+					<convenios-stepper [actual]="actual"></convenios-stepper>
+				</div>
+	            <div class="card-header">
+	                <div>
+	                    <fas-convenios-form-modal></fas-convenios-form-modal>
+	                </div>
+	            </div>
+	            <div *ngIf="openGenericSearch">
+	                <generic-search
+	                    [fieldList]='fieldList'
+	                    (queryParamList)="onSearchEdit($event)">
+	                </generic-search>
+	            </div>
+	            <div class="card-body">
+	                <div class="col-xs-12 col-md-12">
+	                    <div class="panel-body">
+	                        <sa-datatable *ngIf="fasConveniosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+								[options]="{
+									columnDefs: [
+										{ responsivePriority: 1, targets: 0 },
+										{ responsivePriority: 2, targets: -1 }
+									]}" width="100%">
+	                            <thead>
+	                                <tr>
+										<th data-class="expand">Número Solicitud</th>
+	                                	<th data-class="expand">Convenio</th>
+										<th data-hide="phone,tablet">Número de Cuotas</th>
+										<th data-hide="phone,tablet">Fecha Solicitud</th>
+	                                    <th data-hide="phone,tablet">Acciones</th>
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                <tr *ngFor="let fasConvenios of fasConveniosList, let i = index" (click)="onSelectedFasConvenios(fasConvenios)">
+										<td>{{fasConvenios.idConvenio}}</td>
+	                                	<td>
+											{{tiposConv.get(i) }}
+											<fas-convenios-tipo-convenio 
+												[idTipoConvenio]="fasConvenios.fasTipoConvIdTipoConv" 
+												[ind]="i"
+												[mapTiposConv] = "tiposConv"
+												(propagar) ="procesar($event)">
+											</fas-convenios-tipo-convenio>
+										</td>
+										<td>{{fasConvenios.numeroCuotas}}</td>
+										<td>{{this.datepipe.transform(fasConvenios.fechaSolicitud, 'dd/MM/yyyy')}}</td>
+	                                    <td>
+											<button (click)="setActual(fasConvenios.idConvenio, fasConvenios.estado)">Ver estado</button>
+										</td> 
+	                                </tr>
+	                            </tbody>
+	                        </sa-datatable>
+	                    </div>		
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>
+

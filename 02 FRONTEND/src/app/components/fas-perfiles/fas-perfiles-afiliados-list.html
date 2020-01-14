@@ -1,0 +1,60 @@
+<div id="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <h3>Lista de Afiliados Fasesoft {{salidaTest}}</h3>
+                        </div>
+                    </div>
+                    <!-- <div class="card-header">
+                        <div>
+                            <button type="button" class="btn btn-primary btn-lg" (click)= "advancedSearch()">
+                                <span class="icon glyphicon glyphicon-search"></span><span class="title"> Advanced search</span>
+                            </button>
+                             <fas-afiliados-form-modal></fas-afiliados-form-modal>
+                        </div>
+                    </div> -->
+                    <div *ngIf="openGenericSearch">
+                        <generic-search
+                            [fieldList]='fieldList'
+                            (queryParamList)="onSearchEdit($event)">
+                        </generic-search>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-xs-12 col-md-12">
+                            <div class="panel-body">
+                                <sa-datatable *ngIf="fasAfiliadosList" paginationLength="true" tableClass="table table-striped table-bordered table-hover" 
+                                    [options]="{
+                                        columnDefs: [
+                                            { responsivePriority: 1, targets: 0 },
+                                            { responsivePriority: 2, targets: -1 }
+                                        ]}" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th data-hide="phone,tablet">Nombre</th>
+                                            <th data-hide="phone,tablet">Apellido</th>
+                                            <th data-class="expand">Correo</th>
+                                            <th data-hide="phone,tablet">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let fasAfiliados of fasAfiliadosList" (click)="onSelectedFasAfiliados(fasAfiliados)">
+                                            <td>{{fasAfiliados.nombre}}</td>
+                                            <td>{{fasAfiliados.apellido}}</td>
+                                            <td>{{fasAfiliados.correo}}</td>
+                                            <td>
+                                                <fas-perfiles-form-afiliados [fasAfiliados]='fasAfiliados'></fas-perfiles-form-afiliados>
+
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                </sa-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    

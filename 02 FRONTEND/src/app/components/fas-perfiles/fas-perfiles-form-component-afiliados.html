@@ -1,0 +1,66 @@
+<div id="content" >
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title" align="center" >
+	                    <h3>Formulario Asignación Perfiles a Usuarios</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div >
+	                   <div class="panel-body" >
+	                       <div>
+	                               <form #fasAfiliadosForm="ngForm"  >
+
+									<div class="form-group" class="col-md-6">
+											<label for="correo">Correo</label>
+											<input disabled type="string" id="correo" class="form-control"
+											required name="correo" [(ngModel)]="fasAfiliados.correo" >
+											<div *ngIf="formErrors.correo" class="alert alert-danger">
+												   {{ formErrors.correo }}
+											</div>
+									</div>
+
+									<div class="form-group" class="col-md-6">
+										<label for="nombre">Nombre(s)</label>
+										 <input disabled type="string" id="nombre" class="form-control"
+											required  name="nombre" [(ngModel)]="fasAfiliados.nombre" >
+										<div *ngIf="formErrors.nombre" class="alert alert-danger">
+											   {{ formErrors.nombre }}
+										</div>
+									</div>
+
+									<div class="form-group" class="col-md-6" style="margin-top: 1%">
+										<label for="apellido">Apellido(s)</label>
+										 <input disabled type="string" id="apellido" class="form-control"
+											required name="apellido" [(ngModel)]="fasAfiliados.apellido" >
+										<div *ngIf="formErrors.apellido" class="alert alert-danger">
+											   {{ formErrors.apellido }}
+										</div>
+									</div>
+
+									 <div class="form-group" class="col-md-4" style="margin-top: 1%">
+											<label>Tipo de Perfiles</label>
+											<br>
+											<div *ngFor="let tipoPerfil of fasPerfilesList,  let i = index">
+												<input  type="checkbox" [id]="'fasPerfilesIdPerfil'+i" [checked]="compararPerfilesDeUnUsuario(tipoPerfil,i)" required name="fasPerfilesIdPerfil" (change)="cambiarLosPerfiles(i)" >
+												<label [for]="'fasPerfilesIdPerfil'+i" >{{tipoPerfil.tipo}} </label>
+											</div>
+											<br>
+											<div >
+												<br>
+												<button  class="btn btn-lg btn-primary" (click)="onSubmit()" [disabled]="botonDisabled || validarUsuario()">
+													Asignar
+												</button>
+											</div>
+									</div>
+								</form>
+						   </div>
+						</div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

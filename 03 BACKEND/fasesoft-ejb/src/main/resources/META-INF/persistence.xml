@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="fasesoftDS" transaction-type="JTA">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <jta-data-source>jdbc/fasesoftDS</jta-data-source>
+    <class>com.fasesoft.modelo.entidades.FasAccesos</class>
+    <class>com.fasesoft.modelo.entidades.FasAfiliados</class>
+    <class>com.fasesoft.modelo.entidades.FasAhorros</class>
+    <class>com.fasesoft.modelo.entidades.FasAportes</class>
+    <class>com.fasesoft.modelo.entidades.FasConvenios</class>
+    <class>com.fasesoft.modelo.entidades.FasCreditos</class>
+    <class>com.fasesoft.modelo.entidades.FasExtractos</class>
+    <class>com.fasesoft.modelo.entidades.FasPagos</class>
+    <class>com.fasesoft.modelo.entidades.FasPerfiles</class>
+    <class>com.fasesoft.modelo.entidades.FasPermisos</class>
+    <class>com.fasesoft.modelo.entidades.FasRoles</class>
+    <class>com.fasesoft.modelo.entidades.FasSolConvenios</class>
+    <class>com.fasesoft.modelo.entidades.FasTiposConvenio</class>
+    <class>com.fasesoft.modelo.entidades.FasTiposDeAhorro</class>
+    <class>com.fasesoft.modelo.entidades.FasTiposDeCredito</class>
+    <class>com.fasesoft.modelo.entidades.FasUsuarios</class>
+    <!--<properties>
+		    <property name="openjpa.ConnectionRetainMode" value="always"/> 
+	       <property name="wsjpa.FastPath" value="true"/> 
+	       <property name="openjpa.RestoreState" value="false"/> 
+	       <property name="openjpa.OptimizeIdCopy" value="true"/> 
+	       <property name="openjpa.ProxyManager" value="delayCollectionLoading=true"/>
+	       <property name="openjpa.Log" value="SQL=TRACE"/> 
+       </properties>-->
+    <!--properties>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties-->
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,116 @@
+<div id="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">
+						<h3>SOLICITUD DE CRÉDITO FASESOFT</h3>
+					</div>
+				</div>
+				<div class="card-body">
+					<div>
+						<div class="panel-body">
+							<div>
+								<!--<div [hidden]="submitted">-->
+								<form #fasCreditosForm="ngForm" *ngIf="active">
+									<!-- (ngSubmit)="onSubmit()"-->
+
+
+									<!--<div class="form-group" class="col-md-6">
+										<label for="idCredito">Código del Crédito</label>
+
+										<input type="number" id="idCredito" class="form-control" required
+											name="idCredito" [(ngModel)]="fasCreditos.idCredito">
+										<div *ngIf="formErrors.idCredito" class="alert alert-danger">
+											{{ formErrors.idCredito }}
+										</div>
+									</div>-->
+
+
+									<div class="container">
+										<div class="row">
+											<div class="form-group" class="col-md-4">
+												<label for="monto">Monto</label>
+												<br>
+												<input
+													onkeypress="return event.charCode >= 48 && event.charCode <= 57 || event.charCode <= 8"
+													type="text" id="monto" class="form-control margenb" required
+													maxlength="8" minlength="6" name="monto" [(ngModel)]="fasCreditos.monto"
+													#monto="ngModel">
+												<div *ngIf="formErrors.monto" class="alert alert-danger " role="alert"
+													disabled>
+													{{ formErrors.monto}}
+
+												</div>
+											</div>
+
+											<div class="form-group" class="col-md-4">
+												<label>Tipo de crédito</label>
+												<br>
+												<select type="number" id="fasTiposDeCreditoIdTipo" class="form-control"
+													required name="fasTiposDeCreditoIdTipo" value="Selecionar"
+													[(ngModel)]="fasCreditos.fasTiposDeCreditoIdTipo"
+													(change)="cambiarTasa(fasCreditos.fasTiposDeCreditoIdTipo)"
+													(change)="cuotasMaxima(fasCreditos.fasTiposDeCreditoIdTipo)">
+													<!--<option [value]="null" selected>Selecionar</option>-->
+													<option *ngFor="let tipoCredito of fasTiposDeCreditoList"
+														[value]="tipoCredito.idTipo">{{tipoCredito.tipo}}</option>
+												</select>
+											</div>
+										</div>
+
+										<br>
+										<br>
+										<div class="row">
+											<div class="form-group" class="col-md-4">
+												<label for="tasaReal">Tasa</label>
+												<br>
+												<input type="number" id="tasaReal" class="form-control" required
+													name="tasaReal" [(ngModel)]="fasCreditos.tasaReal" disabled>
+												<div *ngIf="formErrors.tasaReal" class="alert alert-danger" disabled>
+													{{ formErrors.tasaReal }}
+												</div>
+											</div>
+
+
+
+											<div class="form-group" class="col-md-4">
+												<label>Número de cuotas</label>
+												<br>
+												<select type="number" id="cuotas" class=" form-control" required
+													name="cuotas" value="Selecionar"
+													[(ngModel)]="fasCreditos.numeroCuotas">
+													<!---<option [value]="null" selected>Selecionar</option>-->
+													<option *ngFor="let cuotaMaxima of cuotaMaximalist"
+														[value]="cuotaMaxima">{{cuotaMaxima}}</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<!-- <div class="form-group" class="col-md-6">
+										<label for="fasAfiliadosCorreo">Correo</label>
+										<input type="string" id="fasAfiliadosCorreo" class="form-control" required
+											name="fasAfiliadosCorreo" [(ngModel)]="fasCreditos.fasAfiliadosCorreo" maxlength="50">
+										<div *ngIf="formErrors.fasAfiliadosCorreo" class="alert alert-danger">
+											{{ formErrors.fasAfiliadosCorreo }}
+										</div>
+									</div> -->
+
+
+
+									<div class="col-md-12">
+										<br>
+
+										<confirmation-modal [msg]='modalMessage'
+											(resp)="getConfirmationResponse($event);"></confirmation-modal>
+										<br>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

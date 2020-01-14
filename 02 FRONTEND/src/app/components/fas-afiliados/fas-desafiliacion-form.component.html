@@ -1,0 +1,72 @@
+<div id="content">
+	<div class="row">
+		<h3>Desafiliación</h3>
+	    <div class="col-md-5">
+	        <div class="card">
+				<h3>Ahorros</h3>
+				<table>
+					<tr>
+					  <th>Tipo de ahorro</th>
+					  <th>Monto</th>
+					</tr>
+					<tr *ngFor="let fasDesafiliacionAhorro of fasDesafiliacionesAhorros">
+						<td>{{fasDesafiliacionAhorro.tipo}}</td>
+						<td>{{fasDesafiliacionAhorro.monto}}</td>
+					</tr>
+				  </table>
+	        </div>
+		</div>
+		<div class="col-md-5">
+	        <div class="card">
+				<h3>Créditos</h3>
+				<table>
+					<tr>
+					  <th>Tipo</th>
+					  <th>Saldo</th>
+					  <th>Estado</th>
+					</tr>
+					<tr *ngFor="let fasDesafiliacionCredito of fasDesafiliacionesCreditos">
+							<td>{{fasDesafiliacionCredito.tipo}}</td>
+							<td>{{fasDesafiliacionCredito.saldo}}</td>
+							<td>{{fasDesafiliacionCredito.estado}}</td>
+					</tr>
+				  </table>
+	        </div>
+		</div>
+		
+		<div class="col-md-12">
+				<br>
+				<br>
+				<div>
+					<label>Saldo en el fondo: </label>
+						<input type="number" value="{{saldoAFavor}}" disabled>
+					
+						
+				</div>
+				
+				<br>
+				
+				 <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+				<br>
+			</div>
+		
+	</div>
+	
+</div>
+<style>
+	table {
+	  font-family: arial, sans-serif;
+	  border-collapse: collapse;
+	  width: 100%;
+	}
+	
+	td, th {
+	  border: 1px solid #dddddd;
+	  text-align: left;
+	  padding: 8px;
+	}
+	
+	tr:nth-child(even) {
+	  background-color: #dddddd;
+	}
+	</style>

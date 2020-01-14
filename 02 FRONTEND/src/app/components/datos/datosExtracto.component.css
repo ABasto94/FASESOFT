@@ -1,0 +1,243 @@
+.titulo-contenedor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: start;
+  align-content: space-between;
+}
+
+
+article, .contenedor-titulo-datos, .fila-tres-datos p, .fila-dos-datos-partidos-porcentaje p, .fila-dos-datos-mitad p, .contenedor-tipo-credito>div {
+  border-style: solid;
+  border-width: 2px;
+}
+
+.contenedor-titulo-datos>h2 {
+  text-transform: uppercase;
+}
+
+.contenedor-titulo-datos-2>h2 {
+  text-transform: uppercase;
+  margin: 3px;
+  font-weight: bold;
+  font-size: initial;
+}
+
+.titulo-contenedor>h1 {
+  text-transform: uppercase;
+}
+
+.contenedor-datos {
+  display: flex;
+  flex-direction: column;
+}
+
+.fila-tres-datos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fila-tres-datos p, .fila-dos-datos-partidos-porcentaje p, .fila-dos-datos-mitad p {
+  margin: 0;
+  flex: 1 1 0;
+  text-transform: capitalize;
+  padding: 5px;
+}
+
+.contenedor-titulo-datos {
+  text-align: center;
+}
+
+.contenedor-titulo-datos-2 {
+  text-align: center;
+}
+
+.fila-dos-datos-partidos-porcentaje, .fila-dos-datos-mitad {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.fila-dos-datos-partidos-porcentaje p:first-child {
+  flex-grow: 2;
+}
+
+.fila-dos-datos-partidos-porcentaje p:last-child {
+  flex-grow: 0.98;
+}
+
+footer>div:first-child {
+  text-align: center;
+  padding: 10px;
+}
+
+footer>div:first-child p:first-child {
+  text-transform: uppercase;
+  font-size: 8pt;
+}
+
+.contenedor-footer {
+  border-top: 2px;
+  border-top-style: dashed;
+}
+
+.contenido-footer {
+  border-radius: 20px;
+  border-style: solid;
+  margin-top: 15px;
+  text-align: center;
+}
+
+footer .titulo-contenedor {
+  padding: 0;
+}
+
+footer .contenido-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3%;
+}
+
+.contenido-footer p:nth-child(2) {
+  text-align: justify;
+}
+
+.uppercase-text, .exclusivo {
+  text-transform: uppercase;
+}
+
+.firma-contenedor div:nth-child(2) div:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.firma-datos {
+  margin-top: 40px;
+}
+
+.firma-datos>p:first-child {
+  margin: 0;
+}
+
+#cedula, #fecha-solicitud {
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+#fecha-solicitud {
+  margin-right: 160px;
+}
+
+.solicitud {
+  margin-right: 10px;
+}
+
+body {
+  padding: 3%;
+}
+
+div.titulo-contenedor>h1.numero-solicitud, .contenedor-tipo-credito>div>p {
+  text-transform: capitalize;
+}
+
+.imgHeader {
+  object-fit: scale-down !important;
+  width: 200px;
+  height: 52px;
+  margin-right: 20px;
+  padding-bottom: 5px;
+
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
+.contenedor-tipo-credito>div {
+  align-content: center;
+}
+
+/* lo mio */
+
+.ocultarDiv {
+  opacity: 0;
+  width: 800px;
+  height:  792px;
+}
+
+.spanColumna {
+  font-weight: bold;
+  font-size: small;
+}
+
+span.derecha {
+  float: right;
+  display: flex;
+}
+
+span.izquierda {
+  padding-left: 10px;
+}
+
+.contenedor-fila {
+  border: 10px;
+}
+
+hr {
+  margin-top: 10px;
+  margin-bottom: 18px;
+  border: 0;
+  border-top: 2px solid #000;
+}
+
+div.izquierda {
+  width: 50%;
+  flex-grow: 1;
+  padding-left: 30px;
+  border-right: solid 2px;
+}
+
+div.derecha {
+  width: 50%;
+  flex-grow: 1;
+  margin-left: 30px;
+  align-items: center;
+}
+
+span.titulo {
+  font-weight: bold
+}
+
+.tablaAportes {
+  min-width: 95%;
+  max-width: 100%;
+  margin-left: 4%;
+}
+hr.footer{
+  margin-bottom: 13%;
+}
+.tamanoimg{
+  width: 100px;
+  height: 90px;
+  max-width: 101px;
+  max-height: 91px;
+}
+
+.logo{
+  width: 20%;
+  align-self: center;
+  text-align: center;
+}
+.tablaHeader{
+  width: 33%;
+  align-self: center;
+}
+
+#spanNombre{
+  min-width: 400px;
+  max-width: 550px;
+}
+

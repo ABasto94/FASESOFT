@@ -1,0 +1,114 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasAfiliados </h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasAfiliadosForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="correo">{{metadata.correo.label}}</label>
+	
+	                                    <input type="string" id="correo" class="form-control"
+required	                                           name="correo" [(ngModel)]="fasAfiliados.correo" >
+	                                    <div *ngIf="formErrors.correo" class="alert alert-danger">
+	                                           {{ formErrors.correo }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="nombre">{{metadata.nombre.label}}</label>
+                                 			<input type="string" id="nombre" class="form-control"
+required		                                       name="nombre" [(ngModel)]="fasAfiliados.nombre" >
+		                                    <div *ngIf="formErrors.nombre" class="alert alert-danger">
+		                                           {{ formErrors.nombre }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="apellido">{{metadata.apellido.label}}</label>
+                                 			<input type="string" id="apellido" class="form-control"
+required		                                       name="apellido" [(ngModel)]="fasAfiliados.apellido" >
+		                                    <div *ngIf="formErrors.apellido" class="alert alert-danger">
+		                                           {{ formErrors.apellido }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="telefono">{{metadata.telefono.label}}</label>
+                                 			<input type="number" id="telefono" class="form-control"
+required		                                       name="telefono" [(ngModel)]="fasAfiliados.telefono" >
+		                                    <div *ngIf="formErrors.telefono" class="alert alert-danger">
+		                                           {{ formErrors.telefono }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="direccion">{{metadata.direccion.label}}</label>
+                                 			<input type="string" id="direccion" class="form-control"
+required		                                       name="direccion" [(ngModel)]="fasAfiliados.direccion" >
+		                                    <div *ngIf="formErrors.direccion" class="alert alert-danger">
+		                                           {{ formErrors.direccion }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="identificacion">{{metadata.identificacion.label}}</label>
+                                 			<input type="number" id="identificacion" class="form-control"
+required		                                       name="identificacion" [(ngModel)]="fasAfiliados.identificacion" >
+		                                    <div *ngIf="formErrors.identificacion" class="alert alert-danger">
+		                                           {{ formErrors.identificacion }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="tipoId">{{metadata.tipoId.label}}</label>
+                                 			<input type="string" id="tipoId" class="form-control"
+required		                                       name="tipoId" [(ngModel)]="fasAfiliados.tipoId" >
+		                                    <div *ngIf="formErrors.tipoId" class="alert alert-danger">
+		                                           {{ formErrors.tipoId }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="estado">{{metadata.estado.label}}</label>
+                                 			<input type="string" id="estado" class="form-control"
+required		                                       name="estado" [(ngModel)]="fasAfiliados.estado" >
+		                                    <div *ngIf="formErrors.estado" class="alert alert-danger">
+		                                           {{ formErrors.estado }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fechaRetiro">{{metadata.fechaRetiro.label}}</label>
+                                 			<input type="text" id="fechaRetiro" class="form-control"
+required		                                       name="fechaRetiro" [(ngModel)]="fasAfiliados.fechaRetiro" >
+		                                    <div *ngIf="formErrors.fechaRetiro" class="alert alert-danger">
+		                                           {{ formErrors.fechaRetiro }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="mora">{{metadata.mora.label}}</label>
+                                 			<input type="number" id="mora" class="form-control"
+required		                                       name="mora" [(ngModel)]="fasAfiliados.mora" >
+		                                    <div *ngIf="formErrors.mora" class="alert alert-danger">
+		                                           {{ formErrors.mora }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

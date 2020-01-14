@@ -1,0 +1,66 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasTiposDeCredito FORM</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasTiposDeCreditoForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="idTipo">{{metadata.idTipo.label}}</label>
+	
+	                                    <input type="number" id="idTipo" class="form-control"
+required	                                           name="idTipo" [(ngModel)]="fasTiposDeCredito.idTipo" >
+	                                    <div *ngIf="formErrors.idTipo" class="alert alert-danger">
+	                                           {{ formErrors.idTipo }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="tipo">{{metadata.tipo.label}}</label>
+                                 			<input type="string" id="tipo" class="form-control"
+required		                                       name="tipo" [(ngModel)]="fasTiposDeCredito.tipo" >
+		                                    <div *ngIf="formErrors.tipo" class="alert alert-danger">
+		                                           {{ formErrors.tipo }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="tasa">{{metadata.tasa.label}}</label>
+                                 			<input type="number" id="tasa" class="form-control"
+required		                                       name="tasa" [(ngModel)]="fasTiposDeCredito.tasa" >
+		                                    <div *ngIf="formErrors.tasa" class="alert alert-danger">
+		                                           {{ formErrors.tasa }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="descripcion">{{metadata.descripcion.label}}</label>
+                                 			<input type="string" id="descripcion" class="form-control"
+required		                                       name="descripcion" [(ngModel)]="fasTiposDeCredito.descripcion" >
+		                                    <div *ngIf="formErrors.descripcion" class="alert alert-danger">
+		                                           {{ formErrors.descripcion }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

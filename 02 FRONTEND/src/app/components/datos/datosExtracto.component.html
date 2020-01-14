@@ -1,0 +1,246 @@
+<div class="ocultarDiv">
+  <div #formulario>
+    <header>
+
+      <div class="contenedor-seccion" style="display: flex">
+        <div class="logo">
+          <img src="assets/img/logosFasesoft/fasesoftLogo.png" alt="logo fasesoft" class="tamanoimg">
+        </div>
+        <div class="contenedor-titulo-datos-2" style="width: 55%">
+          <h2 class="spaanHeader">FONDO DE EMPLEADOS DE ASESOFTWARE</h2>
+          <h2 class="spaanHeader">FASESOFT</h2>
+          <h2 class="spaanHeader">Nit: 900.122.631-6</h2>
+          <h2 class="spaanHeader">Estado de cuenta a:
+            {{extracto?.ahorroAfiliado?.fechaAporte | date:'yyyy/MM/dd'}}</h2>
+        </div>
+        <div style="width: 20%" class="tablaHeader">
+          <table>
+            <tr>
+              <td><span class="titulo">Generado </span></td>
+              <td><span class="titulo">por sistema</span></td>
+            </tr>
+            <tr>
+              <td><span class="titulo">Fecha: </span></td>
+              <td>{{fechaActual | date:'yyyy/MM/dd'}}</td>
+            </tr>
+            <tr>
+              <td><span class="titulo">Hora: </span></td>
+              <td>{{fechaActual | date:'hh:mm:ss'}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </header>
+    <article style="margin-top: 10px">
+      <div class="contenedor-seccion">
+        <div class="contenedor-fila">
+          <span class="spanColumna izquierda" >Código en fasesoft (680)</span>
+          <span class="spanColumna derecha" id="spanNombre">Asociado: {{extracto?.ahorroAfiliado?.nombre}} {{extracto?.ahorroAfiliado?.apellido}}</span>
+        </div>
+      </div>
+    </article>
+    <hr />
+    <div style="display: flex">
+      <div class="izquierda" style="flex-grow: 1">
+        <span class="izquierda titulo">Cedula</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.identificacion}}</span>
+        <br>
+        <span class="izquierda titulo">Email</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.correo}}</span>
+        <br>
+        <span class="izquierda titulo">Celular</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.telefono}}</span>
+        <br>
+        <span class="izquierda titulo">Dirección</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.direccion}}</span>
+        <br>
+        <span class="izquierda titulo">Ingreso Fondo.</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.fechaIngreso  | date:'yyyy/MM/dd'}}</span>
+        <br>
+        <span class="izquierda titulo">Cuota Aportes</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.aporte}}</span>
+        <br>
+        <span class="izquierda titulo">Cuenta Bancaria</span>
+        <span class="derecha">{{extracto?.ahorroAfiliado?.cuentaBancaria}}</span>
+      </div>
+      <div class="derecha" style="flex-grow: 1">
+        <div style="padding-top: 7%">
+          <span class="izquierda titulo">Tot Aportes y Ahorro perm.</span>
+          <span class="derecha">{{extracto?.ahorroAfiliado?.monto}}</span>
+          <br>
+          <span class="izquierda titulo">Total otros Ahorros</span>
+          <span class="derecha">{{extracto?.saldoOtroAhorros}}</span>
+          <br>
+          <span class="izquierda titulo">Total Prestamos</span>
+          <span class="derecha">{{extracto?.saldoCreditos}}</span>
+          <br>
+          <span class="izquierda titulo">Total Servicios</span>
+          <span class="derecha">{{extracto?.saldoConvenios}}</span>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <article>
+      <div class="contenedor-seccion">
+        <div class="contenedor-fila" align="center">
+          <span class="titulo">APORTES</span>
+        </div>
+      </div>
+    </article>
+    <table class="tablaAportes">
+      <tr>
+        <th>Código</th>
+        <th>Tipo de Aporte</th>
+        <th>Saldo</th>
+        <th>Aporte</th>
+        <th>Distribución</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td><span class="titulo">APORTES ORDINARIOS</span></td>
+        <td>{{extracto?.ahorroAfiliado?.aporteOrdinario}}</td>
+        <td>{{extracto?.ahorroAfiliado?.aporteOrdinarioAporte}}</td>
+        <td>10%</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="titulo">AHORRO PERMANENTE</span></td>
+        <td>{{extracto?.ahorroAfiliado?.ahorroPermanente}}</td>
+        <td>{{extracto?.ahorroAfiliado?.ahorroPermanenteAporte}}</td>
+        <td>90%</td>
+      </tr>
+      <tfoot>
+        <tr>
+          <td colspan="2"><span class="titulo">TOTALES</span></td>
+          <td>{{extracto?.ahorroAfiliado?.monto}}</td>
+        </tr>
+      </tfoot>
+    </table>
+    <hr />
+    <article *ngIf="extracto?.creditos">
+      <div class="contenedor-seccion">
+        <div class="contenedor-fila" align="center">
+          <span class="titulo">OBLIGACIONES</span>
+        </div>
+      </div>
+    </article>
+    <table class="tablaAportes" *ngIf="extracto?.creditos">
+      <tr>
+        <!-- <th>Pagare</th> -->
+        <th>Linea</th>
+        <th> <span> Fecha </span> <br> <span>Desembolso</span></th>
+        <th>Monto</th>
+        <!-- <th>Plazo Meses</th>
+        <th>Cuotas Pend</th> -->
+        <th>Tasa</th>
+        <th>Cuota</th>
+        <th>Saldo</th>
+        <th>Mora Días</th>
+      </tr>
+      <tr *ngFor=" let credito of extracto?.creditos">
+        <!-- <td>quemado</td> -->
+        <td>{{credito.tipo}}</td>
+        <td>{{credito.fecha_desembolso | date:'yyyy/MM/dd'}}</td>
+        <td>{{credito.monto}}</td>
+        <!-- <td>Quemado</td>
+        <td>Quemado</td> -->
+        <td>{{credito.tasa_real}}</td>
+        <td>{{credito.cuota_total}}</td>
+        <td>{{credito.saldo}}</td>
+        <td>{{credito.mora}}</td>
+      </tr>
+      <tfoot>
+        <tr>
+          <td><span class="titulo">TOTALES</span></td>
+          <td></td>
+          <td> <strong></strong></td>
+          <td></td>
+          <td></td>
+          <!-- <td></td>
+          <td></td> -->
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <hr *ngIf="extracto?.creditos"/>
+    <article *ngIf="extracto?.convenios">
+      <div class="contenedor-seccion">
+        <div class="contenedor-fila" align="center">
+          <span class="titulo">SERVICIOS COMPLEMENTARIOS</span>
+        </div>
+      </div>
+    </article>
+    <table class="tablaAportes"  *ngIf="extracto?.convenios">
+      <tr>
+        <!-- <th>Docum</th> -->
+        <th>Descripcion</th>
+        <th>Inicio</th>
+        <!-- <th>Plaz</th>
+        <th>Cta</th>
+        <th>Frc</th> -->
+        <th>Tasa %</th>
+        <th>Cuota</th>
+        <!-- <th>Prox cta</th> -->
+        <th>Saldo</th>
+        <th>Morosidad</th>
+        <!-- <th>Dias</th> -->
+      </tr>
+      <tr *ngFor=" let convenios of extracto?.FasConveniosTiposPagos">
+        <!-- <th></th> -->
+        <th>{{extracto?.convenios?.tipo_convenio}}</th>
+        <th>{{extracto?.convenios?.fecha_desembolso_conv}}</th>
+        <!-- <th>quemado</th>
+        <th>quemado</th>
+        <th>quemado</th> -->
+        <th>{{extracto?.convenios?.tasa_convenio}}</th>
+        <th>{{extracto?.convenios?.cuota_total}}</th>
+        <!-- <th>quemado</th> -->
+        <th>{{extracto?.convenios?.saldo_convenio}}</th>
+        <th>{{extracto?.convenios?.mora_convenio}}</th>
+        <!-- <th></th> -->
+      </tr>
+      <tfoot>
+        <tr>
+          <!-- <td></td> -->
+          <td><span class="titulo">TOTALES</span></td>
+          <td></td>
+          <td></td>
+          <!-- <td></td>
+          <td></td>
+          <td></td> -->
+          <td>{{extracto?.saldoConvenios}}</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+    <hr class="footer"  *ngIf="extracto?.convenios"/>
+    <footer>
+      <div>
+        <p>
+          la recepción de este formulario no implica compromiso para fasesoft
+        </p>
+      </div>
+      <div>
+        <div class="contenido-footer">
+          <p>
+            Dirección: Cra 13 # 93-68 OF 407
+            <br>
+            Conmutador: 6407414 Ext.126
+            <br>
+            Web: <a href="Web: fasesoft@asesoftware.com"
+              style="font-style: italic;color: black;font-weight: bold;">fasesoft@asesoftware.com</a>
+            <br>
+            <a href="www.asesoftware.com/fasesoft-fasesoft@asesoftware.com"
+              style="font-style: italic;color: black;font-weight: bold;">www.asesoftware.com/fasesoft</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<div>
+</div>

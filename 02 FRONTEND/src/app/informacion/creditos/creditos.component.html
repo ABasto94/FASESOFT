@@ -1,0 +1,56 @@
+<div id="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <div class="panel-body">
+              <!-- Header -->
+              <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px"
+                id="home">
+               
+                <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+                  <h1 class="texto">Créditos</h1>
+                </div>
+              </header>
+              <!-- Page content -->
+              
+                <sa-widgets-grid>
+                  <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6" *ngFor="let credito of CreditosList; index as indice">
+                      <!-- product -->
+                      <div class="product-content product-wrap clearfix">
+                        <div class="row">
+                          <div class="col-md-5 col-sm-12 col-xs-12">
+                            <div class="product-image">
+                              <img [src]="'./assets/img/creditos/credito'+indice+'.png'" [alt]="credito.tipo" class="img-responsive">
+                              <span class="tag2 hot">%{{credito.tasa}}</span>
+                            </div>
+                          </div>
+                          <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="product-deatil">
+                              <h5 class="name texto">
+                                <a>{{credito.tipo}} <span>Tasa</span></a>
+                              </h5>
+                              <p class="price-container">
+                                <span>{{credito.tasa}}</span>
+                              </p>
+                              <span class="tag1"></span>
+                            </div>
+                            <div class="description">
+                              <p>{{credito.descripcion}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end product -->
+                    </div>
+                  </div>
+                </sa-widgets-grid>
+      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,142 @@
+<div id="content">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-header">
+					<div class="card-title">
+						<h3>Solicitud de Ahorro Voluntario</h3>
+					</div>
+				</div>
+				<div class="card-body">
+					<div>
+						<div class="panel-body">
+							<div>
+								<!--<div [hidden]="submitted">-->
+								<form #fasAhorrosForm="ngForm" *ngIf="active">
+									<!-- (ngSubmit)="onSubmit()"-->
+									<!-- <div class="form-group" class="col-md-6">
+                                        <label for="idAhorro">{{metadata.idAhorro.label}}</label>
+    
+                                        <input type="number" id="idAhorro" class="form-control"
+required                                               name="idAhorro" [(ngModel)]="fasAhorros.idAhorro" >
+                                        <div *ngIf="formErrors.idAhorro" class="alert alert-danger">
+                                               {{ formErrors.idAhorro }}
+                                        </div>
+                                    </div> -->                 
+
+									<!-- <label class="select">
+										<select name="tipoAhorro">
+											<option value="0" selected="" disabled="">tipo de Ahorro</option>
+											<option *ngFor="let ahorros of listAcceso">{{ahorros.tipo}}</option>
+										</select> <i></i> </label> -->
+
+										
+									<!-- <div class="form-group" class="col-md-6">
+											<label for="fasTiposAhoIdTipoAho">{{metadata.fasTiposAhoIdTipoAho.label}}</label>
+											<input type="number" id="fasTiposAhoIdTipoAho" class="form-control" name="fasTiposAhoIdTipoAho"
+												[(ngModel)]="fasAhorros.fasTiposAhoIdTipoAho">
+											<div *ngIf="formErrors.fasTiposAhoIdTipoAho" class="alert alert-danger">
+												{{ formErrors.fasTiposAhoIdTipoAho }}
+											</div>
+									</div> -->
+
+									<!-- <div class="form-group" class="col-md-6">
+                                        <label  for="tipoAhorro">{{metadata.tipoAhorro.label}}</label>
+                                         <input  type="combobox" id="tipoAhorro" class="form-control"
+required                                               name="tipoAhorro" [(ngModel)]="fasAhorros.tipoAhorro" >
+                                        <div *ngIf="formErrors.tipoAhorro" class="alert alert-danger">
+                                               {{ formErrors.tipoAhorro }}
+                                        </div>
+                                    </div> -->
+
+									<!-- <div class="form-group" class="col-md-6">
+										<label for="monto">{{metadata.monto.label}}</label>
+										<input type="number" id="monto" class="form-control" name="monto"
+											[(ngModel)]="fasAhorros.monto">
+										<div *ngIf="formErrors.monto" class="alert alert-danger">
+											{{ formErrors.monto }}
+										</div>
+									</div> -->
+									<div class="form-group" class="col-md-6">
+											<label for="aporte">{{metadata.aporte.label}}</label>
+											<input type="number" id="aporte" class="form-control" required name="aporte"
+												[(ngModel)]="fasAhorros.aporte">
+											<div *ngIf="formErrors.aporte" class="alert alert-danger">
+												{{ formErrors.aporte }}
+											</div> 
+										</div>
+									<div class="form-group" class="col-md-6">
+										<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<label for="fechaInicioAporte">{{metadata.fechaInicioAporte.label}}</label>
+											<input type="date" placeholder="mm/dd/aaaa" required name="fechaInicioAporte" id="fechaInicioAporte" class="form-control"
+												name="fechaInicioAporte" [(ngModel)]="fasAhorros.fechaInicioAporte">
+											<div *ngIf="formErrors.fechaInicioAporte" class="alert alert-danger">
+												{{ formErrors.fechaInicio }}
+
+											</div>
+										</label>
+									</div>
+									<!-- <div class="form-group" class="col-md-6">
+											<label class="input"> <i class="icon-append fa fa-calendar"></i>
+												<label for="fechaInicio">{{metadata.fechaInicio.label}}</label>
+												<input type="datetime-local" name="fechaInicio" id="fechaInicio"
+													 class="form-control"
+													name="fechaInicio" [(ngModel)]="fasAhorros.fechaInicio">
+												<div *ngIf="formErrors.fechaInicioAporte" class="alert alert-danger">
+													{{ formErrors.fechaInicio }}
+	
+												</div>
+											</label>
+										</div> -->
+
+										<!-- <div class="form-group" class="col-md-6">
+												<label class="input"> <i class="icon-append fa fa-calendar"></i>
+													<label for="fechaSolicitud">{{metadata.fechaSolicitud.label}}</label>
+													<input type="datetime-local" name="fechaSolicitud" id="fechaSolicitud" class="form-control"
+														name="fechaSolicitud" [(ngModel)]="fasAhorros.fechaSolicitud">
+													<div *ngIf="formErrors.fechaInicioAporte" class="alert alert-danger">
+														{{ formErrors.fechaInicio }}
+		
+													</div>
+												</label>
+											</div> -->
+
+										
+
+									<div class="form-group" class="col-md-6">
+											<label class="input"> <i class="icon-append fa fa-envelope-o"></i>
+										<label for="fasAfiliadosCorreo">{{metadata.fasAfiliadosCorreo.label}}</label>
+										<input type="string" id="fasAfiliadosCorreo" class="form-control"  name="fasAfiliadosCorreo"
+											[(ngModel)]="fasAhorros.fasAfiliadosCorreo" readonly="readonly">
+											</label>
+										<!-- <div *ngIf="correo" class="alert alert-danger">
+											{{ formErrors.correo }}
+										</div> -->
+									</div>
+									<!-- <div class="form-group" class="col-md-6">
+											<label for="estado">{{metadata.estado.label}}</label>
+											<input type="estado" id="estado" class="form-control"  name="estado"
+												[(ngModel)]="fasAhorros.estado">
+											<div *ngIf="correo" class="alert alert-danger">
+												{{ formErrors.correo }}
+											</div>
+										</div> -->
+
+
+
+									<div class="col-md-12" >
+										<br>
+
+										<confirmation-modal [msg]='modalMessage'
+											(resp)="getConfirmationResponse($event);" ></confirmation-modal>
+										<br>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

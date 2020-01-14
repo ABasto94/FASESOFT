@@ -1,0 +1,58 @@
+<div id="content">
+	<div class="row">
+	    <div class="col-md-12">
+	        <div class="card">
+	            <div class="card-header">
+	                <div class="card-title">
+	                    <h3>FasPermisos FORM</h3>
+	                </div>
+	            </div>
+	            <div class="card-body">
+	               <div>
+	                   <div class="panel-body">
+	                       <div><!--<div [hidden]="submitted">-->
+	                               <form #fasPermisosForm="ngForm"  *ngIf="active"><!-- (ngSubmit)="onSubmit()"-->
+	                            	<div class="form-group" class="col-md-6">
+	                                    <label for="idPermiso">{{metadata.idPermiso.label}}</label>
+	
+	                                    <input type="number" id="idPermiso" class="form-control"
+required	                                           name="idPermiso" [(ngModel)]="fasPermisos.idPermiso" >
+	                                    <div *ngIf="formErrors.idPermiso" class="alert alert-danger">
+	                                           {{ formErrors.idPermiso }}
+	                                    </div>
+	                            	</div>
+	                                	
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasPerfilesIdPerfil">{{metadata.fasPerfilesIdPerfil.label}}</label>
+                                 			<input type="number" id="fasPerfilesIdPerfil" class="form-control"
+required		                                       name="fasPerfilesIdPerfil" [(ngModel)]="fasPermisos.fasPerfilesIdPerfil" >
+		                                    <div *ngIf="formErrors.fasPerfilesIdPerfil" class="alert alert-danger">
+		                                           {{ formErrors.fasPerfilesIdPerfil }}
+		                                    </div>
+	                                	</div>
+	                             		<div class="form-group" class="col-md-6">
+		                                    <label for="fasAccesosIdAcceso">{{metadata.fasAccesosIdAcceso.label}}</label>
+                                 			<input type="number" id="fasAccesosIdAcceso" class="form-control"
+required		                                       name="fasAccesosIdAcceso" [(ngModel)]="fasPermisos.fasAccesosIdAcceso" >
+		                                    <div *ngIf="formErrors.fasAccesosIdAcceso" class="alert alert-danger">
+		                                           {{ formErrors.fasAccesosIdAcceso }}
+		                                    </div>
+	                                	</div>
+	                            
+	                            
+	                                
+	                                <div class="col-md-12">
+	                                    <br>
+	                                    
+	                                     <confirmation-modal [msg]='modalMessage' (resp)="getConfirmationResponse($event);"></confirmation-modal>
+	                                    <br>
+	                                </div>
+	                            </form>
+	                       </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</div>

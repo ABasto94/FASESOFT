@@ -1,0 +1,96 @@
+<div>
+	<div class="row">
+		<sa-big-breadcrumbs [items]="['Comite', 'Solicitudes aprobacion']" icon="table"
+			class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+		</sa-big-breadcrumbs>
+	</div>
+	<!-- widget grid -->
+	<sa-widgets-grid>
+		<div class="card-body">
+			<div class="col-xs-12 col-md-12">
+				<div class="panel-body">
+					<sa-widgets-grid>
+						<div class="card-body">
+							<div class="col-xs-12 col-md-12">
+								<div class="panel-body">
+									<sa-datatable *ngIf="solicitudesAfiliacion.length>0" paginationLength="true"
+										tableClass="table table-striped table-bordered table-hover "
+										style="text-align: center;" [options]="{
+					columnDefs: [
+					{ responsivePriority: 1, targets: 0 },
+					{ responsivePriority: 2, targets: -1 }
+					]}" width="100%">
+										<thead>
+											<tr>
+												<th><input type="checkbox" name="checkbox-inline"
+														[ngModel]="seleccionoTodos"
+														(ngModelChange)="seleccionarTodos($event)"></th>
+												<th>correo</th>
+												<th>nombres</th>
+												<th>telefono</th>
+												<th>aporte</th>
+												<th>estado</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr *ngFor="let solicitud of solicitudesAfiliacion;let indice = index;">
+												<td>
+													<input type="checkbox" [(ngModel)]="solicitud.seleccionado"
+														name="checkbox-inline">
+												</td>
+												<td>{{solicitud?.correo}}</td>
+												<td>{{solicitud?.nombres}}</td>
+												<td>{{solicitud?.telefono}}</td>
+												<td>{{solicitud?.aporte}}</td>
+												<td>{{solicitud?.aporte}}</td>
+											</tr>
+										</tbody>
+									</sa-datatable>
+									<br>
+									<div *ngIf="solicitudesAfiliacion.length>0">
+										<a class="btn btn-primary btn-labeled"
+											(click)="actualizarUsusarioAfiliar('AFILIADO')"> <span class="btn-label"><i
+													class="glyphicon glyphicon-ok"></i></span>Aceptar </a>
+										<a class="btn btn-primary btn-labeled" (click)="abrirModalMotivoRechazo()"> <span class="btn-label"><i
+													class="glyphicon glyphicon-remove" ></i></span>Rechazar</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</sa-widgets-grid>
+				</div>
+			</div>
+		</div>
+	</sa-widgets-grid>
+
+
+	<div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+		aria-hidden="true">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" (click)="lgModal.hide()" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Motivo de rechazo</h4>
+				</div>
+				<div class="modal-body">
+					<section>
+						<label  class="input">Observaciones</label>
+						<label class="textarea textarea-resizable">
+						  <textarea #observaciones rows="8" class="custom-scroll" style="width: 258px;max-width: 258px;"></textarea>
+						</label>
+					  </section>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" (click)="lgModal.hide()">
+						Cancelar
+					</button>
+					<button type="button" class="btn btn-primary" (click)="actualizarUsuarioRechazar(observaciones.value)">
+						Aceptar
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

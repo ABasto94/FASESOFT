@@ -1,0 +1,6 @@
+<button *ngIf="fasAccesos" type="button" class="btn btn-lg btn-outline-primary" (click)="open()">
+        <span class="icon glyphicon glyphicon-pencil"></span>
+</button>
+<button *ngIf="!fasAccesos" type="button" class="btn btn-primary btn-lg" (click)="open()">
+        <span class="icon glyphicon glyphicon-plus"></span><span class="title">Crear Nuevo Acceso</span>
+</button>

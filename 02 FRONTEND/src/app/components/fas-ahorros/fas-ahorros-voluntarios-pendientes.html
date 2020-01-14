@@ -1,0 +1,123 @@
+<div id="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div align="center">
+				<h2>
+					<b> Lista de Solicitudes de Ahorro Voluntario Pendientes</b>
+				</h2>
+			</div>
+			<sa-datatable *ngIf="!habilitar" paginationLength="true" tableClass="table table-striped table-bordered table-hover" [options]="{
+			columnDefs: [
+				{ responsivePriority: 1, targets: 0 },
+				{ responsivePriority: 2, targets: -1 }
+			]}" width="100%">
+				<thead>
+					<tr>
+						<th data-hide="phone,tablet">Correo Afiliado</th>
+						<th data-hide="phone,tablet">Fecha de Solicitud</th>
+						<th data-class="expand">Estado</th>
+						<th data-hide="phone,tablet">Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let ahorrosVol of ahorrosVoluntarios, let i = index">
+						<td>{{ahorrosVol.fasAfiliadosCorreo}}</td>
+						<td>{{this.datePipe.transform(ahorrosVol.fechaInicio,'dd/MM/yyyy')}}</td>
+						<td>{{ahorrosVol.estado}}</td>
+						<td>
+							<button (click)="ahorroSeleccionado(i)">
+								DETALLE
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</sa-datatable>
+
+			<sa-widgets-grid *ngIf="habilitar">
+				<div class="row">
+					<article class="col-sm-12 col-md-12 col-lg-12">
+						<div sa-widget           [colorbutton]="false"
+						[editbutton]="false"
+						[togglebutton]="false"
+						[deletebutton]="false"
+						[fullscreenbutton]="false"
+						[custombutton]="false"
+						[collapsed]="false"
+						[sortable]="false">
+							<header>
+								<span class="widget-icon"><i class="fa fa-edit"></i></span>
+								<h2>Datos del ahorro No. {{ahorroAfiliadoSeleccionado.idAhorro}}</h2>
+							</header>
+
+							<div>
+								<div class="widget-body no-padding">
+									<form class="smart-form">
+										<header>
+											<h2><b>Datos basicos del Afiliado</b></h2>
+										</header>
+
+										<fieldset>
+											<div class="row">
+												<section class="col col-5">
+													<h6> <b>Correo del Afiliado:</b> {{afiliadoAhorros.correo}}</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Nombre del Afiliado:</b> {{afiliadoAhorros.nombre}}</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Apellido del Afiliado:</b> {{afiliadoAhorros.apellido}}</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Telefono del Afiliado:</b> {{afiliadoAhorros.telefono}}</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Direccion del Afiliado:</b> {{afiliadoAhorros.direccion}}
+													</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Tipo ID:</b> {{afiliadoAhorros.tipoId}}</h6>
+												</section>
+												<section class="col col-5">
+													<h6> <b>Identificacion del Afiliado:</b>
+														{{afiliadoAhorros.identificacion}}</h6>
+												</section>
+											</div>
+										</fieldset>
+										<header>
+											<h2><b>Datos del ahorro</b></h2>
+										</header>
+
+										<fieldset>
+											<div class="row">
+												<section class="col col-5">
+													<h3><b>Monto: </b>{{ahorroAfiliadoSeleccionado.monto}}
+													</h3>
+												</section>
+												<section class="col col-5">
+													<h3><b>Fecha Inicio: </b>{{ahorroAfiliadoSeleccionado.fechaInicio}}</h3>
+												</section>
+												<section class="col col-5">
+													<h3><b>Estado del ahorro: </b>{{ahorroAfiliadoSeleccionado.estado}}</h3>
+												</section>
+												<section class="col col-5">
+													<h3><b>Aporte Mensual: </b>{{ahorroAfiliadoSeleccionado.aporte}}</h3>
+												</section>
+											</div>
+										</fieldset>
+									</form>
+
+								</div>
+							</div>
+
+						</div>
+					</article>
+				</div>
+			</sa-widgets-grid>
+			<div align="center">
+				<button *ngIf="habilitar" class="btn btn-primary btn-lg" (click)="volverClicked()">
+					Volver
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
